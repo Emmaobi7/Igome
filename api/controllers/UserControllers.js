@@ -1,6 +1,6 @@
 // UserControllers.js
 
-const { connectToDB, closeDB } = require('./utils/db');
+const { dbClient } = require('../utils/db');
 
 class UserController {
     static async createUser(req, res) {
@@ -8,7 +8,7 @@ class UserController {
             const { firstname, lastname, idnumber, taxnumber, age, email, phonenumber } = req.body;
             // Validations can be performed here before inserting into the database
 
-            const db = await connectToDB();
+            const db = await dbClient();
             const usersCollection = db.collection('users');
             
             const newUser = {
@@ -34,4 +34,4 @@ class UserController {
     }
 }
 
-export default UsersController;
+module.exports = UserController;
