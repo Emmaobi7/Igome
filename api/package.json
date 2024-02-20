@@ -14,11 +14,14 @@
   "author": "emma, doreendavid. samke",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "firebase-admin": "^12.0.0",
+    "flutterwave-node-v3": "^1.1.7",
     "mongodb": "^6.3.0",
-    "redis": "^4.6.13"
+    "redis": "^4.6.13",
+    "yarn": "^1.22.21"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
