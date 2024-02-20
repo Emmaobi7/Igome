@@ -6,7 +6,7 @@ const authMiddleware = require("./middlewares/authMiddleware")
 
 app.use(cors())
 app.use(express.json())
-//app.use('/', authMiddleware)
+app.use('/', authMiddleware)
 app.use('/', router)
 
 

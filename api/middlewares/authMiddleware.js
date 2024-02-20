@@ -9,6 +9,7 @@ function authMiddleware(request, response, next) {
   firebase.auth().verifyIdToken(token)
   .then(function(id) {
     request.user = id;
+    console.log(id)
     next()
   })
   .catch(function(err) {
