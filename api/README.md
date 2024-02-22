@@ -134,7 +134,7 @@
 ```
 </li>
 
-
+<h1>Conclusion</h1>
 
 Thank you for exploring our API documentation! We hope this guide has provided you with the necessary information to seamlessly utilize and even contribute our payment application. If you have any questions, encounter issues, or want to contribute to the project, feel free to reach out. Your feedback and collaboration are highly valued.
 
@@ -149,4 +149,4 @@ Best regards,
 <p>Feel free to fork this repo we are ready to here from you devs.</p>
 
 <h1>contact</h1>
-`emma46574@gmail.com`
+emma46574@gmail.com
