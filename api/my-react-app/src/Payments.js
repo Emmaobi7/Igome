@@ -3,7 +3,7 @@ import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 
 export default function App() {
    const config = {
-    public_key: 'process.env.REACT_APP_PUBLIC_KEY',
+    public_key: '200469504',
     tx_ref: Date.now(),
     amount: 100,
     currency: 'KSH',

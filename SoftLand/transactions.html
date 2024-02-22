@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Details</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styling */
+    .balance-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #007bff;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <!-- Balance Circle -->
+        <div class="balance-circle mb-4">
+          $5000 <!-- Replace with dynamic balance value -->
+        </div>
+        <!-- Incoming and Outgoing Finances -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Incoming</h5>
+            <p>$2000</p> <!-- Replace with dynamic incoming value -->
+          </div>
+          <div class="col-md-6">
+            <h5>Outgoing</h5>
+            <p>$1000</p> <!-- Replace with dynamic outgoing value -->
+          </div>
+        </div>
+        <!-- Remaining Balance -->
+        <div class="mt-4">
+          <h5>Remaining Balance</h5>
+          <p>$4000</p> <!-- Replace with dynamic remaining balance value -->
+        </div>
+        <!-- Transaction Details -->
+        <div class="mt-4">
+          <h5>Transactions</h5>
+          <ul class="list-group">
+            <li class="list-group-item">Transaction 1: Description 1</li> <!-- Replace with dynamic transaction details -->
+            <li class="list-group-item">Transaction 2: Description 2</li>
+            <li class="list-group-item">Transaction 3: Description 3</li>
+            <!-- Add more list items dynamically -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

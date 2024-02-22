@@ -14,6 +14,9 @@ router.get('/register', (req, res) => {
 // Route for handling form submission
 router.post('/register', createUser);
 
+router.post('/transaction', (req,res) => {
+    res.json(req.body)
+})
 
 
 module.exports = router;

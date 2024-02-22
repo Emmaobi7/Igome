@@ -3,6 +3,10 @@ import './App.css';
 import './Payments'
 
 function App() {
+  function addNewTransaction(ev) {
+    ev.preventDefault();
+    const url =  process.env.REACT_APP_API_URL+'/transactions';
+  }
   return (
     <div className="App">
       <header className="App-header">
