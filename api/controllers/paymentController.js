@@ -1,9 +1,19 @@
+/*
+payment controller
+host: paystack
+*/
+
+
 require('dotenv').config();
 const axios = require('axios')
 
 // this class is implemeted using the PAYSTACK api
 
 class PayMentApi{
+  /*
+  payment api module
+  All methods in this class must use the authorization header for every request to paystack
+  */
     constructor() {
     this.baseUrl = 'https://api.paystack.co'
     this.options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}}
@@ -12,19 +22,32 @@ class PayMentApi{
     }
 
     async initializeTransaction(req, res) {
+      /*
+      initaializeTransaction: initiates a transactio with paypal
+      expect: email and (amount * 100)
+      return: authorization-url for secure payment on 200 or 500 on failure
+      */
+
       const { email, amount } = req.body
       const params = {email: email, amount: amount * 100}
       const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
       try {
         const paystackRes = await axios.post(`${this.baseUrl}/transaction/initialize`, params, options)
-	return res.status(200).json({message: paystackRes.data})
+	      return res.status(200).json({message: paystackRes.data})
       } catch(err) {
         console.log(err.message)
+        return res.status(500).json({error: 'Internal server error'})
       }
     }
 
   async verifyTransaction(req, res) {
-    // database call to get reference which would be stored to db
+    /*
+    verifyTransaction: confirms transaction status
+    expect: reference which would be returned from the initializetransaction method
+    return: failure or success
+    */
+
+    // ---- on this line database call to get reference which would be stored to db
     const options = this.options;
     try{
       const verifyRes = await axios.get(`${this.baseUrl}/transaction/verify/${reference}`, options)
@@ -35,6 +58,12 @@ class PayMentApi{
   }
 
   async getAllTransactions(req, res) {
+    /*
+    getAllTransactions: retrieves all transations on this integration
+    method: GET
+    return: all transactions object or server error on failure
+    */
+
     const options = this.options;
     try{
       const allTransactions = await axios.get(`${this.baseUrl}/transaction`, options)
@@ -45,6 +74,12 @@ class PayMentApi{
   }
 
   async getTransactionById(req, res) {
+    /*
+    getTransactionById: retrieves a transation by id on this integration
+    method: GET
+    return: a transaction object or server error on failure
+    */
+
     const id = request.params.id
     const options = this.options
     try {
@@ -90,6 +125,12 @@ class PayMentApi{
   }
 
   async getBalance(req, res) {
+    /*
+    getBalance: retrieve account balance from paystack
+    method: GET
+    return: object with balance or server error on failure
+    */
+
     const options = this.options;
     try {
       const balance = await axios.get(`${this.baseUrl}/balance`, options)
@@ -99,9 +140,6 @@ class PayMentApi{
     }
   }
 }
-
-
-
 
 
 const paymentApi = new PayMentApi()

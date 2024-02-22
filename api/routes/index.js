@@ -1,3 +1,7 @@
+
+/*
+contains all routes for this server
+*/
 const AppController = require('../controllers/AppController')
 const paymentApi = require('../controllers/paymentController')
 const express = require('express')
