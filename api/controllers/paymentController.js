@@ -7,11 +7,12 @@ class PayMentApi{
     constructor() {
     this.baseUrl = 'https://api.paystack.co'
     this.options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}}
+	    this.initializeTransaction = this.initializeTransaction.bind(this);
     }
 
     async initializeTransaction(req, res) {
       const { email, amount } = req.body
-      const params = {email: email, amount: amount}
+      const params = {email: email, amount: amount * 100}
       const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
       try {
         const paystackRes = await axios.post(`${this.baseUrl}/transaction/initialize`, params, options)
@@ -22,13 +23,13 @@ class PayMentApi{
     }
 
   async verifyTransaction(req, res) {
-    const reference = req.params.reference
+    // database call to get reference which would be stored to db
     const options = this.options;
     try{
       const verifyRes = await axios.get(`${this.baseUrl}/transaction/verify/${reference}`, options)
       return res.status(200).json({message: verifyRes.data})
     } catch (err) {
-      console.log(err.message)
+      return res.status(500).json({error: 'internal server error'})
     }
   }
 
@@ -70,7 +71,7 @@ class PayMentApi{
     const options = this.options;
     try {
       const allCustomers = await axios.get(`${this.baseUrl}/customer`)
-      return res.status({200}).json({message: allCustomers.data})
+      return res.status(200).json({message: allCustomers.data})
     } catch (err) {
       console.log(err.message)
     }  
@@ -81,8 +82,18 @@ class PayMentApi{
     const options = this.options
     try {
       const customer = await axios.get(`${this.baseUrl}/customer/${emailOrcode}`, options)
-      return res.status(200).json({meassage: customer.data})
+      return res.status(200).json({message: customer.data})
     } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  async getBalance(req, res) {
+    const options = this.options;
+    try {
+      const balance = await axios.get(`${this.baseUrl}/balance`)
+      return res.status(200).json({message: balance.data})
+    } catch(err) {
       console.log(err.message)
     }
   }
@@ -92,5 +103,5 @@ class PayMentApi{
 
 
 
-const paymentApi = new PaymentApi()
+const paymentApi = new PayMentApi()
 module.exports =  paymentApi;
