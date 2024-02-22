@@ -28,6 +28,7 @@ function Home() {
   return (
     <div className="Home">
       <Logout />
+      <Balance />
       <h1>Home page</h1>
 	  <h5>{ data }</h5>
 	  <PaymentForm />

@@ -6,9 +6,11 @@ function Balance() {
 
   useEffect(() => {
     async function getBalance() {
+      let data;
       try {
         const response = await axios.get('http://localhost:5000/balance') 
-	if (response.status === 200) { setBalance(response.data) }
+	if (response.status === 200) { data = response.data.message.data[0]  }
+	setBalance(data.balance)
       } catch(err) {
         console.log(err.message)
       }
@@ -20,8 +22,7 @@ function Balance() {
   const [balance, setBalance] = useState('');
   return (
     <div className="balance">
-      {!balance && <h1>00</h1>}
-      {balance && <h1>{balance}</h1>}
+      <h1>{balance}</h1>
     </div>
   )
 }

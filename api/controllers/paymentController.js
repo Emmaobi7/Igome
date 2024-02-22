@@ -7,7 +7,8 @@ class PayMentApi{
     constructor() {
     this.baseUrl = 'https://api.paystack.co'
     this.options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}}
-	    this.initializeTransaction = this.initializeTransaction.bind(this);
+    this.initializeTransaction = this.initializeTransaction.bind(this);
+    this.getBalance = this.getBalance.bind(this);
     }
 
     async initializeTransaction(req, res) {
@@ -91,7 +92,7 @@ class PayMentApi{
   async getBalance(req, res) {
     const options = this.options;
     try {
-      const balance = await axios.get(`${this.baseUrl}/balance`)
+      const balance = await axios.get(`${this.baseUrl}/balance`, options)
       return res.status(200).json({message: balance.data})
     } catch(err) {
       console.log(err.message)
