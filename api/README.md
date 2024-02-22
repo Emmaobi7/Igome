@@ -7,8 +7,8 @@
 
 ======
 <h1>Authentication</h1>
-======
-## firebase
+
+<h3>firebase</h3>
 
 * we leveraged firebase authentication system for this application.
 * Using react create-app we got user credentials and using the javascript sdk securely registered our users.
@@ -27,7 +27,7 @@
 ======
 <h1>Database</h1>
 
-## mongodb
+<h3>mongodb</h3>
 
 * mongodb was used as our persitence agent for its flexible structure
 * The database configurations can be found in the utils folder of this api
@@ -38,58 +38,79 @@
 =======
 <h1>Payment</h1>
 
-##Paystack
+<h3>Paystack</h3>
 
 * phewww to the fun part
 * we leveraged the awesome paystack api for all transactions on this application
 * The endpoints we consumed include:
 * heres the link to the paystack api docs   `https://paystack.com/docs/api/`
 <li>
-<ul>The initialization endpoint</ul>
+<ul><h4>The initialization endpoint</h4></ul>
 
 
 
 ```
-    const https = require('https')
+    async initializeTransaction(req, res) {
 
-    const params = JSON.stringify({
-    "email": "customer@email.com",
-    "amount": "20000"
-    })
-
-    const options = {
-    hostname: 'api.paystack.co',
-    port: 443,
-    path: '/transaction/initialize',
-    method: 'POST',
-    headers: {
-        Authorization: 'Bearer SECRET_KEY',
-        'Content-Type': 'application/json'
+      const { email, amount } = req.body
+      const params = {email: email, amount: amount * 100}
+      const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
+      try {
+        const paystackRes = await axios.post(`${this.baseUrl}/transaction/initialize`, params, options)
+	      return res.status(200).json({message: paystackRes.data})
+      } catch(err) {
+        console.log(err.message)
+        return res.status(500).json({error: 'Internal server error'})
+      }
     }
-    }
-
-    const req = https.request(options, res => {
-    let data = ''
-
-    res.on('data', (chunk) => {
-        data += chunk
-    });
-
-    res.on('end', () => {
-        console.log(JSON.parse(data))
-    })
-    }).on('error', error => {
-    console.error(error)
-    })
-
-    req.write(params)
-    req.end()
 ```
 
 
-<ul>The verify endpoint</ul>
-<ul>The Balance endpoint</ul>
-<ul>The Transactions list  endpoint</ul>
+<ul><h4>The verify endpoint</h4></ul>
+
+```
+    async verifyTransaction(req, res) {
+
+        // ---- on this line database call to get {reference} which would be stored to db
+        const options = this.options;
+        try{
+        const verifyRes = await axios.get(`${this.baseUrl}/transaction/verify/${reference}`, options)
+        return res.status(200).json({message: verifyRes.data})
+        } catch (err) {
+        return res.status(500).json({error: 'internal server error'})
+        }
+    }
+
+```
+<ul><h4>The Balance endpoint</h4></ul>
+
+```
+    async getBalance(req, res) {
+
+        const options = this.options;
+        try {
+        const balance = await axios.get(`${this.baseUrl}/balance`, options)
+        return res.status(200).json({message: balance.data})
+        } catch(err) {
+        console.log(err.message)
+        }
+    }
+```
+
+<ul><h4>The Transactions list  endpoint</h4></ul>
+
+```
+    async getAllTransactions(req, res) {
+
+        const options = this.options;
+        try{
+        const allTransactions = await axios.get(`${this.baseUrl}/transaction`, options)
+        return res.status(200).json({message: allTransactions.data})
+        } catch (err) {
+        console.log(err.message)
+        }
+    }
+```
 </li>
 
 
