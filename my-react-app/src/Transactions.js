@@ -7,21 +7,15 @@ const TransactionDetails = () => {
   const incoming = 2000;
   const outgoing = 1000;
   const remainingBalance = balance - outgoing;
-  const transactions = [
-    { id: 1, description: 'New laptop' },
-    { id: 2, description: 'hotel booking' },
-    { id: 3, description: 'Doreen emma sam' }
-    // Add more transactions as needed
-  ];
-
   return (
-    
-    <div className='transaction' >
+    <body>
+    <main>
+    <div className='transactions' >
       <div className='navigation' >
       <p>MyWallet</p>
       <p>January 2024</p>
     
-      <div className='oval'>current Balance</div>
+      <div className='square'>current Balance</div>
       <div className='balance'>
         <div className=''>
           {/* Balance Circle */}
@@ -30,38 +24,63 @@ const TransactionDetails = () => {
             <span>.00</span>
           </div>
           {/* Incoming and Outgoing Finances */}
-          <div className='spending'>
+          <div div className='spending'>
             <div className='right'>
               <h5>Incoming</h5>
+              <div className='amount green'>
               <p>${incoming}</p>
+            </div>
             </div>
             <div className='left'>
               <h5>Outgoing</h5>
+              <div className='amount red'>
               <p>${outgoing}</p>
             </div>
           </div>
+          </div>
           {/* Remaining Balance */}
-          <div >
+          <div>
             <h5>Remaining Balance</h5>
             <p>${remainingBalance}</p>
           </div>
           {/* Transaction Details */}
-          <div className='payments' >
-            <h5>Transactions</h5>
-            <ul >
-              <div className='description'>
-              {transactions.map(transaction => (
-                <li key={transaction.id}>
-                  Transaction {transaction.id}: {transaction.description}
-                </li>
-              ))}
-              </div>
-            </ul>
+          
+            <h5>Transaction Details</h5>
+            <div className='payments'>
+              <div className='transaction'>
+              <div className='left'>
+                <div className='name'>HP iphone anyar 6s 64GB</div>
+                <div className='datetime'>2024-2-20 12.17</div>
+                </div>
+                <div className='right'>
+                  <div className='amount red'>-$760</div>
+                  </div>
+                  </div>
+                  <div className='transaction'>
+                  <div className='left'>
+                <div className='name'>Transfer dugi Paijo</div>
+                <div className='datetime'>2024-2-21 12.17</div>
+                </div>
+                <div className='right'>
+                  <div className='amount green'>+$320</div>
+                 </div>
+                  </div>
+                  <div className='transaction'>
+                  <div className='left'>
+                <div className='name'>Kopi Setarbak</div>
+                <div className='datetime'>2024-2-22 12.17</div>
+                </div>
+                <div className='right'>
+                  <div className='amount red'>-$60</div>
+                  </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+  </div>
+  </main>
+  </body>
   );
 };
 
