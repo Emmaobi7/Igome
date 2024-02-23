@@ -1,11 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
 import './Payments';
 import SignUpForm from './signup';
 import UserLogin from './LoginForm';
 import PasswordReset from './PasswordReset';
 import TransactionDetails from './Transactions'
-import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { auth } from './firebase';
+import Confirm from './confirmation';
 
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
 	    <Route path="/login" element={ <UserLogin /> } />
       <Route path='/reset-password' element={ <PasswordReset /> } />
       <Route path='/account' element={ <TransactionDetails /> } />
-	    
+	    <Route path='/confirmation' element={ <Confirm /> } />
 	  </Routes>
 	</section>
       </Router>
