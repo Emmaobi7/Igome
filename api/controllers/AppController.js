@@ -1,6 +1,9 @@
 class AppController{
   static get(req, res) {
-    res.send('Welcome')
+    const { user } = req
+    if (user)
+      return res.send(user.email)
+    res.send('welcome')
   }
 }
 

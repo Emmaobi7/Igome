@@ -1,7 +1,17 @@
 const firebase = require('../firebase/index')
 
+/*
+This is the authentication middleware which would verify using firebase every request to this sever
+Authetication: firebase (email and password)
+*/
 
 function authMiddleware(request, response, next) {
+  /*
+  authMiddleware: authentication middleware
+  function: verify every request to server
+  expect: Every user must be verified with email and password(firebase)
+  */
+
   const headerToken = request.headers.authorization;
   if(!headerToken) return response.json({error: "No token provided"}).status(401)
   if(headerToken && headerToken.split(" ")[0] !== "Bearer") return response.status(401).json({error: "Missng required token"})
@@ -9,6 +19,7 @@ function authMiddleware(request, response, next) {
   firebase.auth().verifyIdToken(token)
   .then(function(id) {
     request.user = id;
+    console.log(id)
     next()
   })
   .catch(function(err) {
