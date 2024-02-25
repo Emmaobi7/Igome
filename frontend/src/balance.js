@@ -6,7 +6,7 @@ function Balance() {
 
   useEffect(() => {
     async function getBalance() {
-      let data;
+    
       try {
         const response = await axios.get('http://localhost:5000/balance') 
 	      if (response.status === 200) { data = response.data.message.data[0]  }

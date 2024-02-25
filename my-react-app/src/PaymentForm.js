@@ -7,8 +7,11 @@ function PaymentForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const response = await axios.post('http://localhost:5000/acceptpayment', {email: email, amount: amount})
+      const params = {email: email, amount: amount}
+      const response = await axios.post('http://localhost:5000/acceptpayment', params)
+      
       const authorizationUrl = response.data.message.data.authorization_url
       window.location.href = authorizationUrl;
     } catch (err) {

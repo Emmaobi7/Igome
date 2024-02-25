@@ -26,10 +26,14 @@ const UserLogin = () => {
            }
 
         try {
+          
             const userCredentials = await signInWithEmailAndPassword(auth, email, password)
             const user = userCredentials.user
             const idToken = await getIdToken(user)
             localStorage.setItem('token', idToken)
+            setInvalidCredentials(false)
+            setNetworkError(false)
+            setRequired(false)
             navigate('/account')
           } catch (err) {
             console.log(err.code)

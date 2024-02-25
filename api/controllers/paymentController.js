@@ -19,7 +19,7 @@ class PayMentApi{
     this.options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}}
     this.initializeTransaction = this.initializeTransaction.bind(this);
     this.getBalance = this.getBalance.bind(this);
-    this.createCustomer = this.createCustomer.bind(this);
+    this.getAllTransactions = this.getAllTransactions.bind(this);
     }
 
     async initializeTransaction(req, res) {
@@ -34,7 +34,8 @@ class PayMentApi{
       const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
       try {
         const paystackRes = await axios.post(`${this.baseUrl}/transaction/initialize`, params, options)
-	      return res.status(200).json({message: paystackRes.data})
+	console.log(paystackRes.data)
+	return res.status(200).json({message: paystackRes.data})
       } catch(err) {
         console.log(err.message)
         return res.status(500).json({error: 'Internal server error'})
@@ -71,6 +72,7 @@ class PayMentApi{
       return res.status(200).json({message: allTransactions.data})
     } catch (err) {
       console.log(err.message)
+      return res.status(500).json({error: 'server error'})
     }
   }
 
@@ -149,6 +151,7 @@ class PayMentApi{
     const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}, 'maxRedirects': 20}
     try {
       const createCustomerRequest = await axios.post(`${this.baseUrl}/dedicated_account/assign`, params, options)
+      console.log(createCustomerRequest.data)
       return res.status(200).json({message: createCustomerRequest.data})
     } catch (err) {
       console.log(err)
@@ -158,10 +161,12 @@ class PayMentApi{
   }
 
   async createDedicatedAccount(req, res) {
-    const params = {customer: CUS_nyl8dkhdqzs06te, preferred_bank: "wema-bank"}
-    const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}, 'maxRedirects': 20}
+    const { customerCode } = req.body; 
+    const params = {customer: customerCode, preferred_bank: "wema-bank"}
+    const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
     try {
       const createCustomerRequest = await axios.post(`${this.baseUrl}/dedicated_account/`, params, options)
+      console.log(createCustomerRequest.data)
       return res.status(200).json({message: createCustomerRequest.data})
     } catch (err) {
       console.log(err)

@@ -6,30 +6,23 @@ const AppController = require('../controllers/AppController')
 const paymentApi = require('../controllers/paymentController')
 const express = require('express')
 const router = express.Router();
-const { createUser } = require('../controllers/UserControllers');
+const UserController = require('../controllers/UserControllers');
+
+
 //get routes
 router.get('/', AppController.get);
 router.get('/verifypayment/:reference', paymentApi.verifyTransaction)
 router.get('/balance', paymentApi.getBalance)
+router.get('/transactions', paymentApi.getAllTransactions)
+
 
 
 //post routes
 router.post('/acceptpayment', paymentApi.initializeTransaction);
-router.post('/create_user', paymentApi.createCustomer);
-
-
-// Route for serving the registration form
-router.get('/register', (req, res) => {
-    res.sendFile('register.html', { root: __dirname + '/../public' });
-});
-
-
-// Route for handling form submission
-router.post('/register', createUser);
-
-router.post('/transaction', (req,res) => {
-    res.json(req.body)
-})
+router.post('/create_customer', paymentApi. createCustomer);
+router.post('/create_virtual_account', paymentApi.createDedicatedAccount);
+router.post('/create_user', UserController.createUser);
+router.post('/get_user', UserController.getUser)
 
 
 module.exports = router;

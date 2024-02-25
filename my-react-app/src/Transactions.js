@@ -1,19 +1,49 @@
 import React from 'react';
 import './transaction.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Logout from './Logout';
 
 const TransactionDetails = () => {
   // Define dynamic values
-  const balance = 5000.00;
   const incoming = 2000;
   const outgoing = 1000;
-  const remainingBalance = balance - outgoing;
+  const remainingBalance = outgoing;
+
+  const [balance, setBalance] = useState(null);
+  const [userTransactions, setUserTransactions] = useState(null)
+
+  useEffect(() => {
+    async function loadData() {
+      let data;
+      let transactions;
+      const token = localStorage.getItem('token')
+      const options = {headers: {Authorization: `Bearer ${token}`}}
+      try{
+        const balanceResponse = await axios.get('http://localhost:5000/balance', options)
+        if (balanceResponse.status === 200) { data = balanceResponse.data.message.data[0] }
+        setBalance(data.balance / 100)
+
+        const transactionsResponse = await axios.get('http://localhost:5000/transactions', options)
+        if (transactionsResponse.status === 200) {transactions = transactionsResponse.data.message.data}
+        setUserTransactions(transactions)
+        
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    loadData();
+  }, [])
+
   return (
     <body>
     <main>
     <div className='transactions' >
       <div className='navigation' >
+        <Logout />
       <p>MyWallet</p>
-      <p>January 2024</p>
+      <p>{ new Date().toDateString() }</p>
     
       <div className='square'>current Balance</div>
       <div className='balance'>
@@ -47,33 +77,23 @@ const TransactionDetails = () => {
           
             <h5>Transaction Details</h5>
             <div className='payments'>
-              <div className='transaction'>
-              <div className='left'>
-                <div className='name'>HP iphone anyar 6s 64GB</div>
-                <div className='datetime'>2024-2-20 12.17</div>
-                </div>
-                <div className='right'>
-                  <div className='amount red'>-$760</div>
-                  </div>
-                  </div>
-                  <div className='transaction'>
+            {userTransactions ? (
+            userTransactions.map((transaction) => (
+              <div className='transaction' key={transaction.id}>
+                <>
                   <div className='left'>
-                <div className='name'>Transfer dugi Paijo</div>
-                <div className='datetime'>2024-2-21 12.17</div>
-                </div>
-                <div className='right'>
-                  <div className='amount green'>+$320</div>
-                 </div>
+                    <div className='name'>{transaction.customer.email}</div>
+                    <div className='datetime'>{new Date(transaction.created_at).toLocaleString()}</div>
                   </div>
-                  <div className='transaction'>
-                  <div className='left'>
-                <div className='name'>Kopi Setarbak</div>
-                <div className='datetime'>2024-2-22 12.17</div>
-                </div>
-                <div className='right'>
-                  <div className='amount red'>-$60</div>
+                  <div className='right'>
+                    <div className='amount green'>+${transaction.amount / 100}</div>
                   </div>
-          </div>
+                </>
+              </div>
+            ))
+          ) : (
+            <p>Loading transactions...</p>
+          )}
         </div>
       </div>
     </div>
