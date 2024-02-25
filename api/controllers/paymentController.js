@@ -19,6 +19,7 @@ class PayMentApi{
     this.options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}}
     this.initializeTransaction = this.initializeTransaction.bind(this);
     this.getBalance = this.getBalance.bind(this);
+    this.createCustomer = this.createCustomer.bind(this);
     }
 
     async initializeTransaction(req, res) {
@@ -96,10 +97,12 @@ class PayMentApi{
     const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
 
     try {
-      const createCustomerRequest = await axios.post(`${this.baseUrl}/customer`)
+      const createCustomerRequest = await axios.post(`${this.baseUrl}/customer`, params, options)
+      console.log(createCustomerRequest.data)
       return res.status(200).json({message: createCustomerRequest.data})
     } catch (err) {
-      console.log(err.message)
+      console.log(err)
+      return res.status(500).json({error: 'Server error'})
     }
   }
 
@@ -138,6 +141,33 @@ class PayMentApi{
     } catch(err) {
       console.log(err.message)
     }
+  }
+
+  async createCustomerAndDedicatedAccount(req, res) {
+    const { email, firstName, lastName, phone} = req.body;
+    const params = {email: email, first_name: firstName, last_name: lastName, phone: phone, country: "NG", preferred_bank: "test-bank"}
+    const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}, 'maxRedirects': 20}
+    try {
+      const createCustomerRequest = await axios.post(`${this.baseUrl}/dedicated_account/assign`, params, options)
+      return res.status(200).json({message: createCustomerRequest.data})
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({error: 'Server error'})
+    }
+
+  }
+
+  async createDedicatedAccount(req, res) {
+    const params = {customer: CUS_nyl8dkhdqzs06te, preferred_bank: "wema-bank"}
+    const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}, 'maxRedirects': 20}
+    try {
+      const createCustomerRequest = await axios.post(`${this.baseUrl}/dedicated_account/`, params, options)
+      return res.status(200).json({message: createCustomerRequest.data})
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({error: 'Server error'})
+    }
+  
   }
 }
 

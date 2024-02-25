@@ -7,7 +7,6 @@ const paymentApi = require('../controllers/paymentController')
 const express = require('express')
 const router = express.Router();
 const { createUser } = require('../controllers/UserControllers');
-
 //get routes
 router.get('/', AppController.get);
 router.get('/verifypayment/:reference', paymentApi.verifyTransaction)
@@ -16,6 +15,7 @@ router.get('/balance', paymentApi.getBalance)
 
 //post routes
 router.post('/acceptpayment', paymentApi.initializeTransaction);
+router.post('/create_user', paymentApi.createCustomer);
 
 
 // Route for serving the registration form

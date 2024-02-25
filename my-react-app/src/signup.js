@@ -4,7 +4,8 @@ import './Style.css'
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getIdToken, sendEmailVerification } from 'firebase/auth'
 import { auth } from './firebase';
-
+import axios from 'axios';
+import AccountError from './AccountError'
 
 const UserRegistrationForm = () => {
 
@@ -60,11 +61,23 @@ const UserRegistrationForm = () => {
 
    try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+      const userDetails = {
+        firstName: firstname,
+        lastName: lastname,
+        phone: phonenumber,
+        email: email
+      }
+      const postUser = await axios.post('http://localhost:5000/create_user', userDetails)
+      if (postUser.status !== 200) { <AccountError /> }
+      
+      console.log(postUser.status)
+
       await sendEmailVerification(userCredentials.user)
       const user = userCredentials.user
       const idToken = await getIdToken(user)
       localStorage.setItem('token', idToken)
-
+     
+      
       return navigate("/confirmation")
 
     } catch (err) {
