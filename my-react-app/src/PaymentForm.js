@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './paymentform.css'
 
 function PaymentForm() {
   const [email, setEmail] = useState('')
@@ -23,12 +24,14 @@ function PaymentForm() {
     <div className="paymenForm">
       <h2>Payment Form</h2>
       <form>
-  <label htmlFor="emailField">Email:</label>
-  <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
+        
+        <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
 
-  <label htmlFor="amountField">Amount:</label>
-  <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} />
-  <button type="submit"  onClick={ onSubmit }>Make payment</button>
+        
+        <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} />
+        <div className='btn'>
+        <button type="submit"  onClick={ onSubmit }>Make payment</button>
+        </div>
       </form>
     </div>
   )

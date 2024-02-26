@@ -43,45 +43,39 @@ const TransactionDetails = () => {
     <main>
     <div className='transactions' >
       <div className='navigation' >
-        <Logout />
         
-        <NavLink to='/transfers'>
-         <button>Donate</button>
-        </NavLink>
-      <p>MyWallet</p>
+      <h2>World War III Donations</h2>
       <p>{ new Date().toDateString() }</p>
     
       <div className='square'>current Balance</div>
       <div className='balance'>
         <div className=''>
           {/* Balance Circle */}
-          <div >
+          <div className='balance-amount'>
             ${balance}
-            <span>.00</span>
+            <span id='span'>.00</span>
           </div>
           {/* Incoming and Outgoing Finances */}
           <div div className='spending'>
             <div className='right'>
-              <h5>Incoming</h5>
+            <NavLink to='/transfers'>
+              <button>Donate</button>
+            </NavLink>
               <div className='amount green'>
-              <p>${incoming}</p>
             </div>
             </div>
             <div className='left'>
-              <h5>Outgoing</h5>
+              <Logout />
               <div className='amount red'>
-              <p>${outgoing}</p>
+              
             </div>
           </div>
           </div>
           {/* Remaining Balance */}
-          <div>
-            <h5>Remaining Balance</h5>
-            <p>${remainingBalance}</p>
-          </div>
+          
           {/* Transaction Details */}
           
-            <h5>Transaction Details</h5>
+            <h3 className='alldonations'>All Donations</h3>
             <div className='payments'>
             {userTransactions ? (
             userTransactions.map((transaction) => (

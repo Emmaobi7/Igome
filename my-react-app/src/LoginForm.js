@@ -34,7 +34,7 @@ const UserLogin = () => {
             setInvalidCredentials(false)
             setNetworkError(false)
             setRequired(false)
-            navigate('/account')
+            navigate('/')
           } catch (err) {
             console.log(err.code)
             if (err.code === 'auth/network-request-failed') {
@@ -69,7 +69,7 @@ const UserLogin = () => {
                             <label htmlFor="password">Password:</label>
                             <input type="password" className="form-control" id="password" value={password} name="password" placeholder='enter your password' onChange={(e) => setPassword(e.target.value)} required />
                         </div>
-                        <button onClick={ onSubmit } type="submit" className="btn btn-primary btn-block btn-lg">Login</button>
+                        <button onClick={ onSubmit } type="submit" className="btn btn-primary btn-block ">Login</button>
                     </form>
                     <div className="text-center mt-3">
                        <p>

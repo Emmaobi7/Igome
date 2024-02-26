@@ -111,7 +111,7 @@ const UserRegistrationForm = () => {
 
     return (
         <div className="container">
-            <h1>User Registration Form</h1>
+            <h1>Registration Form</h1>
             <form>
                 {networkError && <h5>please check you network connection</h5>}
                 {emailInUse && <h5>This email is already in use.</h5>}
