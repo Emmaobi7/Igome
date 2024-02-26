@@ -3,6 +3,8 @@ import './transaction.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Logout from './Logout';
+import { NavLink } from 'react-router-dom';
+
 
 const TransactionDetails = () => {
   // Define dynamic values
@@ -42,6 +44,10 @@ const TransactionDetails = () => {
     <div className='transactions' >
       <div className='navigation' >
         <Logout />
+        
+        <NavLink to='/transfers'>
+         <button>Donate</button>
+        </NavLink>
       <p>MyWallet</p>
       <p>{ new Date().toDateString() }</p>
     

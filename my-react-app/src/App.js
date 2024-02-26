@@ -9,6 +9,7 @@ import Confirm from './confirmation';
 import PaymentForm  from './PaymentForm';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { auth } from './firebase'
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
       <Route path='/reset-password' element={ <PasswordReset /> } />
       <Route path='/account' element={ user ? <TransactionDetails /> : <Navigate to='/login'/> } />
 	    <Route path='/confirmation' element={ <Confirm /> } />
-      <Route path='/transfers' element={ <PaymentForm /> }/>
+      <Route path='/transfers' element={ user ? <PaymentForm /> : <Navigate to='/login'/> }/>
 	  </Routes>
 	</section>
       </Router>
