@@ -19,7 +19,7 @@ router.get('/transactions', paymentApi.getAllTransactions)
 
 //post routes
 router.post('/acceptpayment', paymentApi.initializeTransaction);
-router.post('/create_customer', paymentApi. createCustomer);
+router.post('/create_customer', paymentApi.createCustomer);
 router.post('/create_virtual_account', paymentApi.createDedicatedAccount);
 router.post('/create_user', UserController.createUser);
 router.post('/get_user', UserController.getUser)
