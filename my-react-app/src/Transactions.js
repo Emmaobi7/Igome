@@ -1,5 +1,6 @@
 import React from 'react';
 import './transaction.css'
+import Balance from './Balance'
 
 const TransactionDetails = () => {
   // Define dynamic values
@@ -13,11 +14,13 @@ const TransactionDetails = () => {
     <div className='transactions' >
       <div className='navigation' >
       <p>MyWallet</p>
+      
       <p>January 2024</p>
     
       <div className='square'>current Balance</div>
       <div className='balance'>
         <div className=''>
+        <Balance />
           {/* Balance Circle */}
           <div >
             ${balance}
