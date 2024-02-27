@@ -23,7 +23,7 @@ const PasswordReset = () => {
         <div className="container login-container">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <h2 className="text-center">PasswordReset</h2>
+                    <h2 className="text-center">Password Reset</h2>
                     {resetSent ? (
                     <p>Password reset email sent,check you email for instructions</p>
                     ) : (

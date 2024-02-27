@@ -4,7 +4,7 @@ import './Style.css'
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getIdToken, sendEmailVerification } from 'firebase/auth'
 import { auth } from './firebase';
-
+import axios from 'axios';
 
 const UserRegistrationForm = () => {
 
@@ -60,11 +60,31 @@ const UserRegistrationForm = () => {
 
    try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+      
       await sendEmailVerification(userCredentials.user)
       const user = userCredentials.user
       const idToken = await getIdToken(user)
       localStorage.setItem('token', idToken)
 
+      const params = {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phonenumber: phonenumber,
+      }
+
+      const options = {headers: {Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json'}}
+      const store = await axios.post('http://localhost:5000/create_user', params, options)
+      console.log(store.status)
+
+
+      setPasswordLength(false)
+      setMatch(false)
+      setRequired(false)
+      setEmailInUse(false)
+      setNetworkError(false)
+     
+      
       return navigate("/confirmation")
 
     } catch (err) {
@@ -91,7 +111,7 @@ const UserRegistrationForm = () => {
 
     return (
         <div className="container">
-            <h1>User Registration Form</h1>
+            <h1>Registration Form</h1>
             <form>
                 {networkError && <h5>please check you network connection</h5>}
                 {emailInUse && <h5>This email is already in use.</h5>}

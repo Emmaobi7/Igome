@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './paymentform.css'
 
 function PaymentForm() {
   const [email, setEmail] = useState('')
@@ -7,8 +8,11 @@ function PaymentForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const response = await axios.post('http://localhost:5000/acceptpayment', {email: email, amount: amount})
+      const params = {email: email, amount: amount}
+      const response = await axios.post('http://localhost:5000/acceptpayment', params)
+      
       const authorizationUrl = response.data.message.data.authorization_url
       window.location.href = authorizationUrl;
     } catch (err) {
@@ -20,12 +24,14 @@ function PaymentForm() {
     <div className="paymenForm">
       <h2>Payment Form</h2>
       <form>
-  <label htmlFor="emailField">Email:</label>
-  <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
+        
+        <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
 
-  <label htmlFor="amountField">Amount:</label>
-  <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} />
-  <button type="submit"  onClick={ onSubmit }>Make payment</button>
+        
+        <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} />
+        <div className='btn'>
+        <button type="submit"  onClick={ onSubmit }>Make payment</button>
+        </div>
       </form>
     </div>
   )

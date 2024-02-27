@@ -1,6 +1,6 @@
 // UserControllers.js
-
-const { dbClient } = require('../utils/db');
+const dbClient = require('../utils/db');
+const { ObjectId } = require('mongodb');
 
 class UserController {
     static async createUser(req, res) {
