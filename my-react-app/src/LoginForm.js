@@ -1,4 +1,7 @@
-
+/*
+Login module
+login logic
+*/
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style.css'
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -18,6 +21,10 @@ const UserLogin = () => {
 
 
     const onSubmit = async (e) => {
+      /*
+        Login authenticate user
+        redirect to /
+      */
         e.preventDefault()
         if (!email || !password) {
             setRequired(true)

@@ -1,3 +1,8 @@
+/*
+All transactions logic
+route: /
+*/
+
 import React from 'react';
 import './transaction.css'
 import { useState, useEffect } from 'react';
@@ -7,11 +12,11 @@ import { NavLink } from 'react-router-dom';
 
 
 const TransactionDetails = () => {
-  // Define dynamic values
-  const incoming = 2000;
-  const outgoing = 1000;
-  const remainingBalance = outgoing;
-
+  /*
+  dynamically populate page
+  Balance and donations
+  email, date and amount
+  */
   const [balance, setBalance] = useState(null);
   const [userTransactions, setUserTransactions] = useState(null)
 

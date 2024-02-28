@@ -1,3 +1,7 @@
+/*
+This module contains the payment form for this application
+*/
+
 import { useState } from 'react';
 import axios from 'axios';
 import './paymentform.css'
@@ -7,6 +11,12 @@ function PaymentForm() {
   const [amount, setAmount] = useState('')
 
   const onSubmit = async (e) => {
+
+    /*
+      on submit function call
+      makes post request to node server
+      to payment initializeation route
+    */
     e.preventDefault();
     
     try {
