@@ -17,6 +17,7 @@
 * on our server side we made sure to verify every request using a middleware giving acces to authenticated.users only 
 
 ```
+    // Authentication middleware
     function authMiddleware(request, response, next) {
     const headerToken = request.headers.authorization;
     if(!headerToken) return response.json({error: "No token provided"}).status(401)
@@ -51,9 +52,33 @@
 
 <h3>mongodb</h3>
 
+* on this version it is pretty questionable why using a database, but we persisted anways...wink*** :(
 * mongodb was used as our persitence agent for its flexible structure
+* We used the mongo driver as opposed to mongoose(real argument at the team meeting), i means its a pretty     basic database
 * The database configurations can be found in the utils folder of this api
-* storing name, email of user and.......
+* storing firstname, lastname, phonenumber and email of a user.
+* Our database collects this information on user SIGNUP.
+
+
+```
+    // told ya pretty basic 
+
+    static async createUser(req, res) {
+        
+            const { firstname, lastname, email, phonenumber } = req.body
+            const newUser = {firstname, lastname, email, phonenumber}
+            
+            try {
+                const result = await dbClient.usersCollection.insertOne(newUser);
+                console.log(`New user added with ID: ${result.insertedId}`);
+                return res.status(200).json({success: 'user created'})
+            } catch(err){
+                console.log(err)
+                return res.status(500).json({error: 'Internal server error'})
+            }
+        
+        }
+```
 
 
 
@@ -69,6 +94,10 @@
 
 <li>
 <ul><h4>The initialization endpoint</h4></ul>
+<p>This endpoint is used to initiate a payment with paystack</p>
+<p>It returns back an authorization url which we redirect users to to securely make their payments</p>
+<h5>initialize here just means telling paystack, hey i want make a payment yo.</h5>
+
 
 ```
     async initializeTransaction(req, res) {
@@ -88,6 +117,7 @@
 
 
 <ul><h4>The verify endpoint</h4></ul>
+* <h5>NB: we didnt actually use this. it was removed at the last minute</h5>
 
 ```
     async verifyTransaction(req, res) {
@@ -104,6 +134,8 @@
 
 ```
 <ul><h4>The Balance endpoint</h4></ul>
+<p>This enpoint is use to retrieve the balance on this paystack integration</p>
+<p>yup, how much we got hommie.</p>
 
 ```
     async getBalance(req, res) {
@@ -119,6 +151,8 @@
 ```
 
 <ul><h4>The Transactions list  endpoint</h4></ul>
+<p>This endpoint is used to retrive all transactions on this paystack integration</p>
+<p>I said, who sent this??</p>
 
 ```
     async getAllTransactions(req, res) {
