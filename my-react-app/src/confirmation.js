@@ -1,9 +1,17 @@
+/*
+confirm user after email verification 
+route: /confirmation
+*/
+
 import { NavLink } from 'react-router-dom';
 import './confirmation.css'
 import { useState } from 'react';
 import { auth } from './firebase'
 
 function Confirm() {
+    /*
+        confirm email evrified user
+    */
     const [verified, setVerified] = useState(false)
     auth.onAuthStateChanged((user) => {
         if (user) {
