@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb')
+//const { MongoClient } = require('mongodb')
 const { MongoClient } = require('mongodb');
 const { env } = require('process');
 
@@ -20,16 +20,6 @@ class DBClient {
       });
 
   }
-
- 
-    constructor() {
-        this.host = env.DB_HOST || 'localhost';
-        this.port = env.DB_PORT || 27017;
-        this.dbName = env.DB_DATABASE || 'igome';
-        this.client = null;
-        this.db = null;
-        this.connect();
-    }
 
     async connect() {
         try {

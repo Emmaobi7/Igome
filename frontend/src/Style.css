@@ -1,0 +1,58 @@
+.Login {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .Login h2 {
+    text-align: center;
+  }
+  
+  .Login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Login label {
+    margin-bottom: 5px;
+  }
+  
+  .Login input[type="email"],
+  .Login input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .Login button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .Login button:hover {
+    background-color: #0056b3;
+  }
+  
+  .Login p {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .Login p a {
+    margin-left: 5px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .Login p a:hover {
+    text-decoration: underline;
+  }
+ 

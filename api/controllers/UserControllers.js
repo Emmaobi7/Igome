@@ -4,32 +4,31 @@ const { ObjectId } = require('mongodb');
 
 class UserController {
     static async createUser(req, res) {
+       
+        const { firstname, lastname, email, phonenumber } = req.body
+        const newUser = {firstname, lastname, email, phonenumber}
+         
         try {
-            const { firstname, lastname, idnumber, taxnumber, age, email, phonenumber } = req.body;
-            // Validations can be performed here before inserting into the database
+            const result = await dbClient.usersCollection.insertOne(newUser);
+            console.log(`New user added with ID: ${result.insertedId}`);
+            return res.status(200).json({success: 'user created'})
+        } catch(err){
+            console.log(err)
+            return res.status(500).json({error: 'Internal server error'})
+        }
+       
+    }
 
-            const db = await dbClient();
-            const usersCollection = db.collection('users');
-            
-            const newUser = {
-                firstname,
-                lastname,
-                idnumber,
-                taxnumber,
-                age,
-                email,
-                phonenumber
-            };
-
-            const result = await usersCollection.insertOne(newUser);
-            console.log("New user added with ID: ${result.insertedId}");
-
-            res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
-        } catch (error) {
-            console.error('Error creating user:', error);
-            res.status(500).json({ error: 'Internal server error' });
-        } finally {
-            await closeDB();
+    static async getUser(req, res) {
+        const { email } = req.user
+        console.log(email)
+        try {
+            const user = await dbClient.usersCollection.findOne({email})
+            if (user) { return res.status(200).json({success: 'user found'}) }
+            if (!user) { return res.status(404).json({error: 'user not found'}) }
+        } catch(err) {
+            console.log(err)
+            return res.status(500).json({error: 'Internal server error'})
         }
     }
 }

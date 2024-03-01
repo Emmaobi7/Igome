@@ -1,9 +1,8 @@
-
 /*
 contains all routes for this server
 */
 const AppController = require('../controllers/AppController')
-const UserController = require('../controllers/UserControllers')
+const paymentApi = require('../controllers/paymentController')
 const express = require('express')
 const router = express.Router();
 const UserController = require('../controllers/UserControllers');
@@ -19,11 +18,10 @@ router.get('/transactions', paymentApi.getAllTransactions)
 
 //post routes
 router.post('/acceptpayment', paymentApi.initializeTransaction);
-router.post('/create_customer', paymentApi.createCustomer);
+router.post('/create_customer', paymentApi. createCustomer);
 router.post('/create_virtual_account', paymentApi.createDedicatedAccount);
 router.post('/create_user', UserController.createUser);
 router.post('/get_user', UserController.getUser)
 
-router.post('/users', UserController.createUser);
 
 module.exports = router;

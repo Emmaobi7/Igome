@@ -9,4 +9,4 @@ const userSchema = new mongoose.Schema({
     taxNumber: {type:String, required:true}
 });
 
-module.export = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
