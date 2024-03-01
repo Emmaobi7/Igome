@@ -17,6 +17,7 @@
 * on our server side we made sure to verify every request using a middleware giving acces to authenticated.users only 
 
 ```
+    // Authentication middleware
     function authMiddleware(request, response, next) {
     const headerToken = request.headers.authorization;
     if(!headerToken) return response.json({error: "No token provided"}).status(401)

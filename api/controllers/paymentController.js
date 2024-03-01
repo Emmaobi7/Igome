@@ -24,7 +24,7 @@ class PayMentApi{
 
     async initializeTransaction(req, res) {
       /*
-      initaializeTransaction: initiates a transactio with paypal
+      initaializeTransaction: initiates a transactio with paystack
       expect: email and (amount * 100)
       return: authorization-url for secure payment on 200 or 500 on failure
       */
@@ -34,10 +34,10 @@ class PayMentApi{
       const options = {headers: {Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'Content-Type': 'application/json'}}
       try {
         const paystackRes = await axios.post(`${this.baseUrl}/transaction/initialize`, params, options)
-	console.log(paystackRes.data)
-	return res.status(200).json({message: paystackRes.data})
+        console.log(paystackRes.data)
+        return res.status(200).json({message: paystackRes.data})
       } catch(err) {
-        console.log(err.message)
+        console.log(err)
         return res.status(500).json({error: 'Internal server error'})
       }
     }

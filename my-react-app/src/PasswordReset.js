@@ -1,3 +1,8 @@
+/*
+Password reset module
+logic for password reset
+*/
+
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style.css'
@@ -11,6 +16,9 @@ const PasswordReset = () => {
   const [resetSent, setResetSent] = useState(false)
 
   const handlePasswordReset = async () => {
+    /*
+      handler for password reset
+    */
     try {
       await sendPasswordResetEmail(auth, email);
       setResetSent(true)
