@@ -10,6 +10,7 @@ import PaymentForm  from './PaymentForm';
 import { useEffect, useState } from 'react';
 import { auth } from './firebase'
 import LoadingSpinner from './LoadingSpinner';
+import ProjectsPage from './ProjectsPage';
 
 
 function App() {
@@ -48,12 +49,17 @@ function App() {
       <Router>
         <section>
 	  <Routes>
-	    <Route path="/signup" element={ <SignUpForm />} />
-      <Route path='/' element={ user ? <TransactionDetails /> : <Navigate to='/login' /> } />
-	    <Route path="/login" element={ !user ? <UserLogin /> : <Navigate to='/' /> } />
+	    <Route path="/signup" element={ !user ? <SignUpForm /> : <Navigate to='/' /> } />
+      
+      <Route path='/' element={ user ? <TransactionDetails /> : <Navigate to='/' /> } />
+	    <Route path="/login" element={ <UserLogin /> } />
       <Route path='/reset-password' element={ <PasswordReset /> } />
 	    <Route path='/confirmation' element={ <Confirm /> } />
-      <Route path='/transfers' element={ user && <PaymentForm /> }/>
+      <Route path='/donations' element={ user && <PaymentForm /> }/>
+      <Route path='/transaction' element={ <TransactionDetails />} />
+      <Route path='/payment' element={ <PaymentForm />} />
+      <Route path="/projects" element={ <ProjectsPage />} /> 
+
 	  </Routes>
 	</section>
       </Router>

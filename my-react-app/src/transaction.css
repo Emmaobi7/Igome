@@ -1,91 +1,99 @@
 body {
-    background-color: #17181F;
-    color: #ddd;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
+
 main {
-    max-width: 600px;
-    margin: 5cap auto;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .transactions {
-    margin-top: 5%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
 
+.navigation {
+    text-align: center;
 }
-h5 {
-    font: 1em sans-serif;
-    margin: 0;
-}
-p {
-    margin-top: 0;
-    margin-bottom: 0px;
-}
+
 .square {
-    margin-top: 20px;
-    background-color:gray; 
-    border-radius: 35px; 
-    color:whitesmoke;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
     padding: 10px;
-
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .balance-amount {
- padding: 10px;
- font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
 }
-
 
 .spending {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    align-items: center;
+    margin-top: 20px;
 }
-.payments {
-    margin-top: 5px;
-}
-.transaction {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-}
-div.transaction div.name {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
+
+.amount {
     font-size: 1.2rem;
 }
-div.transaction div.datetime {
-    font-size: .8rem;
-    color: #888;
-    text-align: left;
+
+.amount.red {
+    color: #ff5722;
 }
 
-div.right {
-    text-align: right;
-}
-div.amount.red {
-    color: red;
-
-}
-
-div.amount.green {
-    color: #1c1;
+.amount.green {
+    color: #4caf50;
 }
 
 button {
-    padding: 10px;
-    width: 100px;
-    border-radius: 10px;
-    background: linear-gradient(white, grey);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    transform: scale(1.05);
+    background-color: #0056b3;
 }
 
 .alldonations {
     margin-top: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
 }
 
-#span {
-    font-size: 1rem;
+.transaction {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
 }
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction .name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.transaction .datetime {
+    font-size: 0.9rem;
+    color: #888;
+}
+

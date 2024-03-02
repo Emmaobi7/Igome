@@ -1,0 +1,104 @@
+/* Add these styles to your CSS file */
+
+/* Projects Section Styles */
+.projects-container {
+    margin-top: 50px;
+  }
+  
+  .projects-section .card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .projects-section .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .projects-section .card-text {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .projects-section .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .projects-section .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Transactions Section Styles */
+  .transactions-container {
+    margin-top: 50px;
+  }
+  
+  .transactions-section .square {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+  }
+  
+  .transactions-section .balance {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .transactions-section .balance-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .transactions-section .spending {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .transactions-section .btn-donate {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .transactions-section .btn-donate:hover {
+    background-color: #218838;
+  }
+  
+  .transactions-section .btn-logout {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .transactions-section .btn-logout:hover {
+    background-color: #c82333;
+  }
+  
+  .transactions-section .alldonations {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .transactions-section .transaction {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .transactions-section .name {
+    font-weight: bold;
+  }
+  
+  .transactions-section .datetime {
+    color: #6c757d;
+  }
+  

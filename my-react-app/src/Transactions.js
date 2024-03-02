@@ -49,7 +49,7 @@ const TransactionDetails = () => {
     <div className='transactions' >
       <div className='navigation' >
         
-      <h2>World War III Donations</h2>
+      <h2>Donations</h2>
       <p>{ new Date().toDateString() }</p>
     
       <div className='square'>current Balance</div>

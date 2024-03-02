@@ -96,6 +96,10 @@ const UserLogin = () => {
                         </NavLink>
                         
                         </p>
+                        <p>
+                          Want to see ongoing projects?{' '}
+                          <NavLink to='/projects'>View Projects</NavLink>
+                        </p>
 
                     </div>
                 </div>

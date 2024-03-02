@@ -1,191 +1,164 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Style.css'
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getIdToken, sendEmailVerification } from 'firebase/auth'
 import { auth } from './firebase';
 import axios from 'axios';
+import "./Style.css"
 
 const UserRegistrationForm = () => {
-
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password1, setPassword1] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
-  const [required, setRequired] = useState(false)
-  const [match, setMatch] = useState(false)
-  const [passwordLength, setPasswordLength] = useState(false);
-  const [emailInUse, setEmailInUse] = useState(false)
-  const [networkError, setNetworkError] = useState(false)
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstname: '',
+    lastname: '',
+    phonenumber: '',
+  });
+  const [formErrors, setFormErrors] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstname: '',
+    lastname: '',
+    phonenumber: '',
+    networkError: '',
+    emailInUse: '',
+  });
+
+  const validateForm = () => {
+    const errors = {};
+    const { email, password, confirmPassword, firstname, lastname, phonenumber } = formData;
+
+    // Validate email
+    if (!email) {
+      errors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = 'Invalid email address';
+    }
+
+    // Validate password
+    if (!password) {
+      errors.password = 'Password is required';
+    } else if (password.length < 6) {
+      errors.password = 'Password must be at least 6 characters long';
+    }
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+      errors.confirmPassword = 'Passwords do not match';
+    }
+
+    // Validate firstname
+    if (!firstname) {
+      errors.firstname = 'First name is required';
+    }
+
+    // Validate lastname
+    if (!lastname) {
+      errors.lastname = 'Last name is required';
+    }
+
+    // Validate phonenumber
+    if (!phonenumber) {
+      errors.phonenumber = 'Phone number is required';
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const onSubmit = async (e) => {
-  e.preventDefault();
-   if (!email || !password || !password1 || !firstname || !lastname || !phonenumber) {
-    setRequired(true)
-    setMatch(false)
-    setPasswordLength(false)
-    setEmailInUse(false)
-    setNetworkError(false)
-    console.log('All fields are required')
-    return;
-   }
-   if (password1 !== password) {
-    setMatch(true);
-    setRequired(false)
-    setPasswordLength(false)
-    setEmailInUse(false)
-    setNetworkError(false)
-    console.log('password must match'); 
-    return
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
     }
 
-    if (password1 === password) {
-        setPasswordLength(false)
-        setEmailInUse(false)
-        setNetworkError(false)
-    }
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      await sendEmailVerification(userCredentials.user);
+      const user = userCredentials.user;
+      const idToken = await getIdToken(user);
+      localStorage.setItem('token', idToken);
 
-    if (password.length < 6) {
-        setPasswordLength(true)
-        setMatch(false)
-        setRequired(false)
-        setEmailInUse(false)
-        setNetworkError(false)
-        console.log('not enough chararacters.')
-        return
-    }
+      const params = { ...formData };
+      delete params.password;
+      delete params.confirmPassword;
 
-   try {
-      const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
-      
-      await sendEmailVerification(userCredentials.user)
-      const user = userCredentials.user
-      const idToken = await getIdToken(user)
-      localStorage.setItem('token', idToken)
+      const options = { headers: { Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json' } };
+      await axios.post('http://localhost:5000/create_user', params, options);
 
-      const params = {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phonenumber: phonenumber,
-      }
+      navigate('/confirmation');
 
-      const options = {headers: {Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json'}}
-      const store = await axios.post('http://localhost:5000/create_user', params, options)
-      console.log(store.status)
-
-
-      setPasswordLength(false)
-      setMatch(false)
-      setRequired(false)
-      setEmailInUse(false)
-      setNetworkError(false)
-     
-      
-      return navigate("/confirmation")
-
+      window.location.href = '/projects.html';
     } catch (err) {
-      console.log(err.code)
+      console.error(err.code);
       if (err.code === 'auth/email-already-in-use') {
-        setEmailInUse(true)
-        setPasswordLength(false)
-        setMatch(false)
-        setRequired(false)
-        setNetworkError(false)
+        setFormErrors({ ...formErrors, emailInUse: 'This email is already in use' });
+      } else if (err.code === 'auth/network-request-failed') {
+        setFormErrors({ ...formErrors, networkError: 'Please check your network connection' });
       }
-      if (err.code == 'auth/network-request-failed') {
-        setNetworkError(true)
-        setEmailInUse(false)
-        setPasswordLength(false)
-        setMatch(false)
-        setRequired(false)
-      }
-       return;
-      }
+    }
+  };
 
-      
-  }
-
-    return (
-        <div className="container">
-            <h1>Registration Form</h1>
-            <form>
-                {networkError && <h5>please check you network connection</h5>}
-                {emailInUse && <h5>This email is already in use.</h5>}
-                {required && <h5>All fields are required.</h5>}
-                {match && <h5>Ooops.. Passwords don't match.</h5>}
-                <div className="form-group row first-field">
-                    <label htmlFor="firstname" className="col-sm-2 col-form-label">First Name:</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="firstname" value={firstname} name="firstname" placeholder='John' onChange={(e) => setFirstname(e.target.value)} required />
-                    </div>
-                </div>
-
-                <div className="form-group row">
-                    <label htmlFor="lastname" className="col-sm-2 col-form-label">Last Name:</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="lastname" value={lastname} name="lastname" placeholder='Doe' onChange={(e) => setLastname(e.target.value)} required />
-                    </div>
-                </div>
-
-                
-                <div className="form-group row">
-                    <label htmlFor="email" className="col-sm-2 col-form-label">Email:</label>
-                    <div className="col-sm-10">
-                        <input type="email" value={email} className="form-control" id="email" name="email" placeholder='johndoe@gmail.com' onChange={(e) => setEmail(e.target.value)} required />
-                    </div>
-                </div>
-
-                <div className="form-group row">
-                    <label htmlFor="phonenumber" className="col-sm-2 col-form-label">Phone Number:</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="phonenumber" name="phonenumber" value={phonenumber} placeholder='+254 700000000' onChange={(e) => setPhonenumber(e.target.value)} required/>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="password1" className="col-sm-2 col-form-label">Password:</label>
-                    {passwordLength && <h6 style={{color: 'red'}}>must be 6 or more characters</h6>}
-                    {!passwordLength && <h6>must be 6 or more characters</h6>}
-                    <div className="col-sm-10">
-                        <input type="password" className="form-control" id="password1" name="password1" placeholder='enter your password' value={password1} onChange={(e) => setPassword1(e.target.value)} required />
-                    </div>
-                </div>
-
-                <div className="form-group row">
-                    <label htmlFor="password" className="col-sm-2 col-form-label">Confirm password:</label>
-                    {passwordLength && <h6 style={{color: 'red'}}>must be 6 or more characters</h6>}
-                    {!passwordLength && <h6>must be 6 or more characters</h6>}
-                    <div className="col-sm-10">
-                        <input type="password" value={password} className="form-control" id="password" name="password" placeholder='confirm password'  onChange={(e) => setPassword(e.target.value)}required />
-                    </div>
-                </div>
-
-
-                <div className="row">
-                    <div className="">
-                    <div className="">
-                        <button type="submit" className="btn btn-primary btn-lg" onClick={ onSubmit }>Register</button>
-                        <p>
-                        Do have an account?{' '}
-                        <NavLink to='/login'>
-                        login{' '}
-                        </NavLink>
-                        </p>
-                    </div>
-                    {networkError && <h5>please check you network connection</h5>}
-                    {emailInUse && <h5>This email is already in use.</h5>}
-                    {required && <h5>All fields are required.</h5>}
-                    {match && <h5>Ooops.. Passwords don't match.</h5>}
-
-                    </div>
-                    
-                </div>
-            </form>
+  return (
+    <div className="container">
+      <h1>Be a HopeFusion hero by Registering with us</h1>
+      <form onSubmit={onSubmit}>
+      <div className="form-group">
+      <label htmlFor="firstname">First Name:</label>
+      <input type="text" className="form-control" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} />
+      {formErrors.firstname && <span className="error">{formErrors.firstname}</span>}
+    </div>
+        
+        {/* Add similar form-group elements for lastname, email, phone number, password, confirm password */}
+        <div className="form-group">
+        <label htmlFor="lastname">Last Name:</label>
+        <input type="text" className="form-control" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} />
+        {formErrors.lastname && <span className="error">{formErrors.lastname}</span>}
         </div>
-    );
+
+        <div className="form-group">
+        <label htmlFor="email">Email:</label>
+        <input type="email" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} />
+        {formErrors.email && <span className="error">{formErrors.email}</span>}
+        </div>
+
+        <div className="form-group">
+        <label htmlFor="phonenumber">Phone Number:</label>
+        <input type="text" className="form-control" id="phonenumber" name="phonenumber" value={formData.phonenumber} onChange={handleChange} />
+        {formErrors.phonenumber && <span className="error">{formErrors.phonenumber}</span>}
+        </div>
+
+        <div className="form-group">
+        <label htmlFor="password">Password:</label>
+        <input type="password" className="form-control" id="password" name="password" value={formData.password} onChange={handleChange} />
+        {formErrors.password && <span className="error">{formErrors.password}</span>}
+        </div>
+
+        <div className="form-group">
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
+        {formErrors.confirmPassword && <span className="error">{formErrors.confirmPassword}</span>}
+        </div>
+
+
+        <button type="submit" className="btn btn-primary">Register</button>
+        <p>
+          Already have an account?{' '}
+          <NavLink to='/login'>Login</NavLink>
+        </p>
+
+        {formErrors.networkError && <span className="error">{formErrors.networkError}</span>}
+        {formErrors.emailInUse && <span className="error">{formErrors.emailInUse}</span>}
+      </form>
+    </div>
+  );
 };
 
 export default UserRegistrationForm;
