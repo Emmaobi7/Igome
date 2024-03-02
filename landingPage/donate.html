@@ -27,6 +27,48 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <style>
+    .card-body {
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .card-title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .card-text {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .payment-method {
+      margin-bottom: 20px;
+    }
+    
+    .payment-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .payment-details {
+      color: #888;
+      font-size: 14px;
+    }
+    
+    .payment-details a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -49,6 +91,26 @@
             <div class="card-body">
               <h3 class="card-title">Cash Donation</h3>
               <p class="card-text">Contribute directly with cash donations to support our projects.</p>
+              
+              <h5>Payment Methods:</h5>
+              
+              <!-- PayPal -->
+              <div class="payment-method">
+                <a href="https://www.paypal.com"><img src="./assets/img/paypal.jpeg" alt="PayPal Logo" class="payment-logo"></a>
+                <p class="payment-details">Donate securely via PayPal. <a href="https://www.paypal.com">Donate Now</a></p>
+              </div>
+              
+              <!-- Credit Card -->
+              <div class="payment-method">
+                <a href="https://www.example.com/creditcard"><img src="./assets/img/mpesa_logo.webp" alt="Credit Card Logo" class="payment-logo"></a>
+                <p class="payment-details">Make a donation using your credit card. <a href="https://www.example.com/creditcard">Donate Now</a></p>
+              </div>
+              
+              <!-- Bank Transfer -->
+              <div class="payment-method">
+                <a href="https://www.examplebank.com"><img src="./assets/img/mastercard.png" alt="Bank Transfer Logo" class="payment-logo"></a>
+                <p class="payment-details">Transfer funds directly to our bank account. <a href="https://www.examplebank.com">Donate Now</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -91,7 +153,6 @@
       </div>
     </div>
   </section>
-  
 
   <!-- Include your footer here -->
   <footer class="footer" role="contentinfo">
