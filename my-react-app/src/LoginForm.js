@@ -43,7 +43,7 @@ const UserLogin = () => {
             setInvalidCredentials(false)
             setNetworkError(false)
             setRequired(false)
-            navigate('/projects')
+            navigate('/')
           } catch (err) {
             console.log(err.code)
             if (err.code === 'auth/network-request-failed') {

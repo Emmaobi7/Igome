@@ -10,23 +10,26 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     async function loadData() {
-      try {
-        const balanceResponse = await axios.get('http://localhost:5000/balance');
-        if (balanceResponse.status === 200) {
-          setBalance(balanceResponse.data.balance);
-        }
+      let data;
+      let transactions;
+      const token = localStorage.getItem('token')
+      const options = {headers: {Authorization: `Bearer ${token}`}}
+      try{
+        const balanceResponse = await axios.get('http://localhost:5000/balance', options)
+        if (balanceResponse.status === 200) { data = balanceResponse.data.message.data[0] }
+        setBalance(data.balance / 100)
 
-        const transactionsResponse = await axios.get('http://localhost:5000/transactions');
-        if (transactionsResponse.status === 200) {
-          setUserTransactions(transactionsResponse.data.transactions);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+        // const transactionsResponse = await axios.get('http://localhost:5000/transactions', options)
+        // if (transactionsResponse.status === 200) {transactions = transactionsResponse.data.message.data}
+        // setUserTransactions(transactions)
+        
+      } catch(err) {
+        console.log(err)
       }
     }
 
     loadData();
-  }, []);
+  }, [])
 
   const projects = [
     {
