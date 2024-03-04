@@ -16,14 +16,12 @@ const router = require('./routes/index')
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const path = require('path');
 const authMiddleware = require("./middlewares/authMiddleware")
 
 app.use(cors())
 app.use(express.json())
 //app.use('/', authMiddleware)
 app.use('/', router)
-app.use(express.static(path.join(__dirname, "build")));
 
 
 
