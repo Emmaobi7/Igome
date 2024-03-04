@@ -17,6 +17,8 @@ const TransactionDetails = () => {
   Balance and donations
   email, date and amount
   */
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [balance, setBalance] = useState(null);
   const [userTransactions, setUserTransactions] = useState(null)
 
@@ -27,11 +29,11 @@ const TransactionDetails = () => {
       const token = localStorage.getItem('token')
       const options = {headers: {Authorization: `Bearer ${token}`}}
       try{
-        const balanceResponse = await axios.get('http://localhost:5000/balance', options)
+        const balanceResponse = await axios.get(`${apiUrl}/balance`, options)
         if (balanceResponse.status === 200) { data = balanceResponse.data.message.data[0] }
         setBalance(data.balance / 100)
 
-        const transactionsResponse = await axios.get('http://localhost:5000/transactions', options)
+        const transactionsResponse = await axios.get(`${apiUrl}/transactions`, options)
         if (transactionsResponse.status === 200) {transactions = transactionsResponse.data.message.data}
         setUserTransactions(transactions)
         

@@ -18,6 +18,7 @@ function PaymentForm() {
       makes post request to node server
       to payment initializeation route
     */
+      const apiUrl = process.env.REACT_APP_API_URL;
     e.preventDefault();
 
     if (!email || !amount) {
@@ -28,7 +29,7 @@ function PaymentForm() {
       const params = {email: email, amount: amount}
       const token = localStorage.getItem('token')
       const options = {headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'}}
-      const response = await axios.post('http://localhost:5000/acceptpayment', params, options)
+      const response = await axios.post(`${apiUrl}/acceptpayment`, params, options)
       const authorizationUrl = response.data.message.data.authorization_url
       setField(false)
       window.location.href = authorizationUrl;
@@ -45,7 +46,7 @@ function PaymentForm() {
       <div className="paymenForm">
       <h2>Payment Form</h2>
       { field && <h5 style={{color: 'red'}}>All fields are required</h5>}
-      <form>
+      <form className='form'>
         
         <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required/>
 

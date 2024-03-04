@@ -8,6 +8,8 @@ import axios from 'axios';
 
 const UserRegistrationForm = () => {
 
+   
+
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
@@ -22,6 +24,8 @@ const UserRegistrationForm = () => {
   const [networkError, setNetworkError] = useState(false)
 
   const onSubmit = async (e) => {
+
+    const apiUrl = process.env.REACT_APP_API_URL;
   e.preventDefault();
    if (!email || !password || !password1 || !firstname || !lastname || !phonenumber) {
     setRequired(true)
@@ -74,7 +78,7 @@ const UserRegistrationForm = () => {
       }
 
       const options = {headers: {Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json'}}
-      const store = await axios.post('http://localhost:5000/create_user', params, options)
+      const store = await axios.post(`${apiUrl}/create_user`, params, options)
       console.log(store.status)
 
 

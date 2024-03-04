@@ -7,7 +7,7 @@ import './Style.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, getIdToken } from 'firebase/auth'
 import { auth } from './firebase';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 const UserLogin = () => {
