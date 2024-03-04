@@ -63,7 +63,7 @@ const TransactionDetails = () => {
           {/* Incoming and Outgoing Finances */}
           <div div className='spending'>
             <div className='right'>
-            <NavLink to='/transfers'>
+            <NavLink to='/donations'>
               <button>Donate</button>
             </NavLink>
               <div className='amount green'>
