@@ -477,7 +477,904 @@ const ProjectsPage = () => {
 </html>
 
 
+width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: left;
+      max-width: auto;
+
+
+
+      <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Donate - HopeFusion Africa</title>
+  <!-- Include your meta tags, favicons, and CSS files here -->
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .card-body {
+      text-align: center;
+      padding: 20px;
+      flex-direction: row;
+    }
+    
+    .card-title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .card-text {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .payment-method {
+      margin-bottom: 20px;
+    }
+    
+    .payment-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .payment-details {
+      color: #888;
+      font-size: 14px;
+    }
+    
+    .payment-details a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Include your header with navigation here -->
+
+  <!-- ======= Donate Section ======= -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-8" data-aos="fade-up">
+          <h2 class="section-heading">Donate to HopeFusion Africa</h2>
+          <p>Your donation will make a difference in the lives of African communities. Support us in creating a better future for all.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card bg-primary text-white">
+            <div class="card-body">
+              <h3 class="card-title">Cash Donation</h3>
+              <p class="card-text">Contribute directly with cash donations to support our projects.</p>
+              
+              <h5>Payment Methods:</h5>
+              
+              <!-- PayPal -->
+              <div class="payment-method">
+                <a href="https://www.paypal.com"><img src="./assets/img/paypal.jpeg" alt="PayPal Logo" class="payment-logo"></a>
+                <p class="payment-details">Donate securely via PayPal. <a href="https://www.paypal.com">Donate Now</a></p>
+              </div>
+              
+              <!-- Credit Card -->
+              <div class="payment-method">
+                <a href="https://www.example.com/creditcard"><img src="./assets/img/mpesa_logo.webp" alt="Credit Card Logo" class="payment-logo"></a>
+                <p class="payment-details">Make a donation using your credit card. <a href="https://www.example.com/creditcard">Donate Now</a></p>
+              </div>
+              
+              <!-- Bank Transfer -->
+              <div class="payment-method">
+                <a href="https://www.examplebank.com"><img src="./assets/img/mastercard.png" alt="Bank Transfer Logo" class="payment-logo"></a>
+                <p class="payment-details">Transfer funds directly to our bank account. <a href="https://www.examplebank.com">Donate Now</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card bg-success text-white">
+            <div class="card-body">
+              <h3 class="card-title">Cheque Donation</h3>
+              <p class="card-text">Make donations through cheque payable to HopeFusion Africa.</p>
+            
+              <h3 class="card-title">Gift Donation</h3>
+              <p class="card-text">Donate gifts such as clothing, food, or educational materials.</p>
+            
+              <h3 class="card-title">Stock Matching</h3>
+              <p class="card-text">Participate in stock matching programs to double your donation impact.</p>
+           
+              <h3 class="card-title">Celebration Donations</h3>
+              <p class="card-text">Make donations to celebrate special occasions like birthdays or anniversaries.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more donation methods as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Include your footer here -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h3>About Africa Donation Project</h3>
+          <p>Our mission is to support sustainable development and improve the quality of life for people in Africa through various initiatives and projects.</p>
+          <p class="social">
+            <a href="#">HopeFusion<span class="bi bi-twitter"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-facebook"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-instagram"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-linkedin"></span></a>
+          </p>
+        </div>
+        <div class="col-md-7 ms-auto">
+          <div class="row site-section pt-0">
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Navigation</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Services</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Get Involved</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">Partnerships</a></li>
+                <li><a href="#">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+          <p class="copyright">&copy; Copyright 2024 Africa Donation Project. All Rights Reserved</p>
+          <div class="credits">
+            Designed by <a href="#">HopeFusion Africa</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+
+
+/*
+This module contains the payment form for this application
+*/
+
+import { useState } from 'react';
+import axios from 'axios';
+import './paymentform.css'
+import { NavLink } from 'react-router-dom';
+
+function PaymentForm() {
+  const [email, setEmail] = useState('')
+  const [amount, setAmount] = useState('')
+  const [field, setField] = useState(false)
+
+  const onSubmit = async (e) => {
+    /*
+      on submit function call
+      makes post request to node server
+      to payment initializeation route
+    */
+    e.preventDefault();
+
+    if (!email || !amount) {
+      setField(true)
+    }
+    
+    try {
+      const params = {email: email, amount: amount}
+      const token = localStorage.getItem('token')
+      const options = {headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'}}
+      const response = await axios.post('http://localhost:5000/acceptpayment', params, options)
+      const authorizationUrl = response.data.message.data.authorization_url
+      setField(false)
+      window.location.href = authorizationUrl;
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  return (
+    <div className='content'>
+       <NavLink to='/projects'>
+          <button id='bk-btn'>Go Back</button>
+        </NavLink>
+      <div className="paymenForm">
+      <h2>Payment Form</h2>
+      { field && <h5 style={{color: 'red'}}>All fields are required</h5>}
+      <form>
+        
+        <input type="email" id="emailField" name="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required/>
+
+        
+        <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} required/>
+        <div className='btn'>
+        <button type="submit"  onClick={ onSubmit }>Make Donation</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  )
+}
+
+export default PaymentForm;
+
+
+
+<div class="wrap-icon icon-1">
+                <i class="bi bi-heart-fill"></i> <!-- Change icon to a heart or compassion-related icon -->
+              </div>
+
+
+
+
+
+
+              <!-- ======= About Section ======= -->
+    <section class="section">
+      <div class="container">
+    
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-5" data-aos="fade-up">
+            <h2 class="section-heading">Empowering African Communities</h2>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
+            <div class="feature-1 text-center">
+              <div class="wrap-icon icon-1">
+                <i class="bi bi-people"></i> <!-- Change icon to a community-related icon -->
+              </div>
+              <h3 class="mb-3">Community Development</h3>
+              <p>Support projects aimed at improving infrastructure, education, and healthcare in African communities.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-1 text-center">
+                <div class="wrap-icon icon-1">
+                  <img src="./assets/img/aid (6).jpg" style="width: 100px; height: 100px;"> <!-- Adjust width and height as needed -->
+                </div>
+                
+                <i class="bi bi-globe"></i> <!-- Change icon to a global or world-related icon -->
+              </div>
+              <h3 class="mb-3">Global Impact</h3>
+              <p>Make a global impact by contributing to initiatives that address poverty and promote sustainable development in Africa.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-1 text-center">
+              <div class="wrap-icon icon-1">
+                <img src="./assets/img/aid (1).jpg" style="width: 90px; height: 90px;"> <!-- Adjust width and height as needed -->
+              </div>
+              
+              <h3 class="mb-3">Humanitarian Aid</h3>
+              <p>Provide humanitarian aid and support to vulnerable populations affected by crises and conflicts in Africa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+                  
+
+
 <div class="col-lg-4 iphone-wrap">
               <img src="assets/img/phone_6.jpg" alt="Image" class="phone-1" data-aos="fade-right">
               <img src="assets/img/phone_4.jpg" alt="Image" class="phone-2" data-aos="fade-right" data-aos-delay="200">
             </div>
+
+
+            <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!--
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    -->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>HopeFusion Africa</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+
+
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import PaymentForm from './PaymentForm';
+
+
+const ProjectsPage = () => {
+  const [balance, setBalance] = useState(null);
+  const [userTransactions, setUserTransactions] = useState(null);
+
+  useEffect(() => {
+    async function loadData() {
+      // Fetch balance and user transactions
+      // Implement your logic to fetch balance and transactions here
+      // For demonstration purposes, I'll assume these values are fetched from an API
+      try {
+        const balanceResponse = await axios.get('http://localhost:5000/balance');
+        if (balanceResponse.status === 200) {
+          setBalance(balanceResponse.data.balance);
+        }
+
+        const transactionsResponse = await axios.get('http://localhost:5000/transactions');
+        if (transactionsResponse.status === 200) {
+          setUserTransactions(transactionsResponse.data.transactions);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  // Define project data
+  const projects = [
+    {
+      title: 'Community Development',
+      description: 'Supporting initiatives aimed at improving infrastructure, education, and healthcare in African communities.',
+      targetCommunities: 20,
+      fundraisingGoal: 50000,
+      imageUrl: './cdev.jpg',
+      link: 'donation.js' // Replace with actual link to donation page
+    },
+    {
+      title: 'Clean Water Initiative',
+      description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water.',
+      targetCommunities: 30,
+      fundraisingGoal: 70000,
+      imageUrl: './water.jpg',
+      link: 'donation.js' // Replace with actual link to donation page
+    },
+    { 
+        title: 'Environmental Conservation',
+        description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water. Preserving Africas natural habitats and promoting sustainable practices for future generations.',
+        TargetCommunities: 15,
+        FundraisingGoal: 40000,
+        imageUrl: './env.jpg',
+        link: 'donation.js'
+    },
+    {
+        title: 'Education Empowerment',
+        description: 'Investing in education programs to empower youth and adults with knowledge and skills for a brighter future.',
+        TargetCommunities: 25,
+        FundraisingGoal: 60000,
+        imageUrl: './edu.jpg',
+        link: 'donation.js',
+    }
+    // Add more projects as needed
+  ];
+
+  return (
+    <div className="row projects-container">
+      {projects.map((project, index) => (
+        <div className="col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+          <div className="card">
+            <div className="card-body">
+              <h3 className="card-title">{project.title}</h3>
+              <img 
+                src={project.imageUrl} 
+                alt={project.title} 
+                className="project-image" 
+                style={{ width: '200%', height: '500px', objectFit: 'cover' }} // Adjust dimensions as needed
+              />
+              <p className="card-text">{project.description}</p>
+              <p className="card-text">Target Communities: {project.targetCommunities}</p>
+              <p className="card-text">Fundraising Goal: ${project.fundraisingGoal}</p>
+              <p className="card-text">Progress: {(balance / project.fundraisingGoal) * 100}%</p>
+              
+              <div className='square'>current Balance</div>
+              <div className='balance'>
+                <div className=''>
+                  {/* Balance Circle */}
+                  <div className='balance-amount'>
+                    ${balance}
+                    <span id='span'>.00</span>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" className="btn btn-primary">
+                <NavLink to='/payment' style={{ color: 'white', textDecoration: 'none' }}>Donate to this project</NavLink>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+  
+};
+
+export default ProjectsPage;
+
+
+
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import PaymentForm from './PaymentForm';
+
+
+const ProjectsPage = () => {
+  const [balance, setBalance] = useState(null);
+  const [userTransactions, setUserTransactions] = useState(null);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const balanceResponse = await axios.get('http://localhost:5000/balance');
+        if (balanceResponse.status === 200) {
+          setBalance(balanceResponse.data.balance);
+        }
+
+        const transactionsResponse = await axios.get('http://localhost:5000/transactions');
+        if (transactionsResponse.status === 200) {
+          setUserTransactions(transactionsResponse.data.transactions);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  const projects = [
+    {
+      title: 'Community Development',
+      description: 'Supporting initiatives aimed at improving infrastructure, education, and healthcare in African communities.',
+      targetCommunities: 20,
+      fundraisingGoal: 50000,
+      imageUrl: '/cdev.jpg', // Assuming the image is in the public directory
+      link: 'donation.js' // Replace with actual link to donation page
+    },
+    {
+      title: 'Clean Water Initiative',
+      description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water.',
+      targetCommunities: 30,
+      fundraisingGoal: 70000,
+      imageUrl: '/water.jpg', // Assuming the image is in the public directory
+      link: 'donation.js' // Replace with actual link to donation page
+    },
+    { 
+        title: 'Environmental Conservation',
+        description: 'Preserving Africa\'s natural habitats and promoting sustainable practices for future generations.',
+        targetCommunities: 15,
+        fundraisingGoal: 40000,
+        imageUrl: '/env.jpg', // Assuming the image is in the public directory
+        link: 'donation.js'
+    },
+    {
+        title: 'Education Empowerment',
+        description: 'Investing in education programs to empower youth and adults with knowledge and skills for a brighter future.',
+        targetCommunities: 25,
+        fundraisingGoal: 60000,
+        imageUrl: '/edu.jpg', // Assuming the image is in the public directory
+        link: 'donation.js',
+    }
+  ];
+
+  return (
+    <div className="row projects-container">
+      {projects.map((project, index) => (
+        <div className="col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+          <div className="card">
+            <div className="card-body">
+              <h3 className="card-title">{project.title}</h3>
+              <img 
+                src={project.imageUrl} 
+                alt={project.title} 
+                className="project-image" 
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }} // Adjust dimensions as needed
+              />
+              <p className="card-text">{project.description}</p>
+              <p className="card-text">Target Communities: {project.targetCommunities}</p>
+              <p className="card-text">Fundraising Goal: ${project.fundraisingGoal}</p>
+              <p className="card-text">Progress: {(balance / project.fundraisingGoal) * 100}%</p>
+              
+              <div className='square'>current Balance</div>
+              <div className='balance'>
+                <div className=''>
+                  {/* Balance Circle */}
+                  <div className='balance-amount'>
+                    ${balance}
+                    <span id='span'>.00</span>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" className="btn btn-primary">
+                <NavLink to='/payment' style={{ color: 'white', textDecoration: 'none' }}>Donate to this project</NavLink>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+  
+};
+
+export default ProjectsPage;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Donate - HopeFusion Africa</title>
+  <!-- Include your meta tags, favicons, and CSS files here -->
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpg" rel="icon">
+  <link href="assets/img/favicon.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .card-body {
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      color: black;
+    }
+    
+    .card-title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .card-text {
+      color:black;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .payment-method {
+      margin-bottom: 20px;
+    }
+    .payment-method p {
+      font-weight: bold;
+      font-style: oblique;
+      color: black;
+    }
+    .payment-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .payment-details {
+      color: #888;
+      font-size: 14px;
+    }
+    
+    .payment-details a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Include your header with navigation here -->
+
+  <!-- ======= Donate Section ======= -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-8" data-aos="fade-up">
+          <h2 class="section-heading">Donate to HopeFusion Africa</h2>
+          <p>Your donation will make a difference in the lives of African communities. Support us in creating a better future for all.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12" data-aos="fade-up">
+          <div class="card bg-primary text-white">
+            <div class="card-body">
+              <h3 class="card-title">Cash Donation</h3>
+              <p class="card-text">Contribute directly with cash donations to support our projects.</p>
+              
+              <h5>Payment Methods:</h5>
+              
+              <!-- PayPal -->
+              <div class="payment-method">
+                <a href="https://www.paypal.com"><img src="./assets/img/paypal.jpeg" alt="PayPal Logo" class="payment-logo"></a>
+                <p class="payment-details">Donate securely via PayPal. <a href="https://www.paypal.com">Donate Now</a></p>
+              </div>
+              
+              <!-- Credit Card -->
+              <!-- M-Pesa Donation Modal -->
+<div class="modal-container" id="mpesaDonationModal">
+  <div class="modal-header">
+    <button id="close_m">X</button>
+    <div data-v-67e839d8="">
+      <h3 data-v-67e839d8="">HopeFusion Africa</h3>
+    </div>
+  </div>
+  <div class="modal-body">
+    <h4 data-v-67e839d8="">KES 1,200 M-Pesa Donation</h4>
+    <ul data-v-67e839d8="">
+      <li data-v-67e839d8="">Fill the form below, Click Donate</li>
+      <li data-v-67e839d8="">Enter M-Pesa PIN when prompted on your phone</li>
+      <li data-v-67e839d8="">You'll receive receipts from M-Pesa, and M-Changa (22231)</li>
+    </ul>
+    <form method="post" id="mpesa_form" name="mpesa_form" data-v-67e839d8="" data-gtm-form-interact-id="0">
+      <div class="form-group" data-v-67e839d8="">
+        <legend data-v-67e839d8="">M-Pesa Phone Number</legend>
+        <input type="number" class="form-control" placeholder="Enter a valid M-Pesa Phone Number" name="mpesa_phone" id="mpesa_phone" autocomplete="OFF" data-v-67e839d8="" data-gtm-form-interact-field-id="1">
+        <input id="tillCheckoutAmount" name="tillCheckoutAmount" type="hidden" readonly="" autocomplete="off" value="1200" data-v-67e839d8="">
+        <input id="tillCheckoutAccount" name="tillCheckoutAccount" type="hidden" readonly="" autocomplete="off" value="84727" data-v-67e839d8="">
+      </div>
+      <div class="form-group" data-v-67e839d8="">
+        <legend data-v-67e839d8="">Full Name</legend>
+        <input type="text" class="form-control" placeholder="Enter your name" name="mpesa_name" id="mpesa_name" autocomplete="OFF" minlength="5" data-v-67e839d8="" data-gtm-form-interact-field-id="0">
+      </div>
+      <div class="form-group" data-v-67e839d8="">
+        <legend data-v-67e839d8="">Goodwill Message</legend>
+        <textarea cols="7" rows="3" class="form-control" id="goodwill" name="goodwill" placeholder="Optional goodwill message to fundraiser" data-v-67e839d8=""></textarea>
+      </div>
+      <div id="till_error" class="error-msg" data-v-67e839d8="" style="display: none;"></div>
+      <div id="till_success" class="success" data-v-67e839d8="" style="">M-CHANGA: Request accepted for processing, please check your phone - 254726177107 for M-Pesa Prompt.</div>
+      <div data-v-67e839d8="">
+        <button id="tillPush" class="button" data-v-67e839d8="" style="width: 100%; background-color: rgb(117, 172, 18); font-weight: 600; font-size: 24px; color: white; border-radius: 65px;" disabled="">Donate</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">© M-Changa 2024</div>
+</div>
+
+<!-- Credit Card -->
+<div class="payment-method">
+  <a href="#" onclick="openMpesaModal()"><img src="./assets/img/mpesa_logo.webp" alt="Credit Card Logo" class="payment-logo"></a>
+  <p class="payment-details">Make a donation using your mobile Money. <a href="#" onclick="openMpesaModal()">Donate Now</a></p>
+</div>
+
+<script>
+  function openMpesaModal() {
+    document.getElementById('mpesaDonationModal').style.display = 'block';
+  }
+
+  document.getElementById('close_m').addEventListener('click', function() {
+    document.getElementById('mpesaDonationModal').style.display = 'none';
+  });
+</script>
+
+              <div class="payment-method">
+                <a href="https://www.example.com/creditcard"><img src="./assets/img/mpesa_logo.webp" alt="Credit Card Logo" class="payment-logo"></a>
+                <p class="payment-details">Make a donation using your mobile Money. <a href="https://www.example.com/creditcard">Donate Now</a></p>
+              </div>
+              
+              <!-- Bank Transfer -->
+              <div class="payment-method">
+                <a href="https://www.examplebank.com"><img src="./assets/img/mastercard.png" alt="Bank Transfer Logo" class="payment-logo"></a>
+                <p class="payment-details">Transfer funds directly to our bank account. <a href="https://www.examplebank.com">Donate Now</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12" data-aos="fade-up">
+          <div class="card bg-success text-white">
+            <div class="card-body">
+              <h3 class="card-title">Cheque Donation</h3>
+              <p class="card-text">Make donations through cheque payable to HopeFusion Africa.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" data-aos="fade-up">
+          <div class="card bg-info text-white">
+            <div class="card-body">
+              <h3 class="card-title">Gift Donation</h3>
+              <p class="card-text">Donate gifts such as clothing, food, or educational materials.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" data-aos="fade-up">
+          <div class="card bg-warning text-white">
+            <div class="card-body">
+              <h3 class="card-title">Stock Matching</h3>
+              <p class="card-text">Participate in stock matching programs to double your donation impact.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" data-aos="fade-up">
+          <div class="card bg-info text-white">
+            <div class="card-body">
+              <h3 class="card-title">Celebration Donations</h3>
+              <p class="card-text">Make donations to celebrate special occasions like birthdays or anniversaries.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more donation methods as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Include your footer here -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h3>About Africa Donation Project</h3>
+          <p>Our mission is to support sustainable development and improve the quality of life for people in Africa through various initiatives and projects.</p>
+          <p class="social">
+            <a href="#">HopeFusion<span class="bi bi-twitter"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-facebook"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-instagram"></span></a>
+            <a href="#">HopeFusion<span class="bi bi-linkedin"></span></a>
+          </p>
+        </div>
+        <div class="col-md-7 ms-auto">
+          <div class="row site-section pt-0">
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Navigation</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Services</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Get Involved</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">Partnerships</a></li>
+                <li><a href="#">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+          <p class="copyright">&copy; Copyright 2024 Africa Donation Project. All Rights Reserved</p>
+          <div class="credits">
+            Designed by <a href="#">HopeFusion Africa</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -10,9 +10,6 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     async function loadData() {
-      // Fetch balance and user transactions
-      // Implement your logic to fetch balance and transactions here
-      // For demonstration purposes, I'll assume these values are fetched from an API
       try {
         const balanceResponse = await axios.get('http://localhost:5000/balance');
         if (balanceResponse.status === 200) {
@@ -31,13 +28,13 @@ const ProjectsPage = () => {
     loadData();
   }, []);
 
-  // Define project data
   const projects = [
     {
       title: 'Community Development',
       description: 'Supporting initiatives aimed at improving infrastructure, education, and healthcare in African communities.',
       targetCommunities: 20,
       fundraisingGoal: 50000,
+      imageUrl: '/cdev.jpg', // Assuming the image is in the public directory
       link: 'donation.js' // Replace with actual link to donation page
     },
     {
@@ -45,23 +42,25 @@ const ProjectsPage = () => {
       description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water.',
       targetCommunities: 30,
       fundraisingGoal: 70000,
+      imageUrl: '/water.jpg', // Assuming the image is in the public directory
       link: 'donation.js' // Replace with actual link to donation page
     },
     { 
         title: 'Environmental Conservation',
-        description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water. Preserving Africas natural habitats and promoting sustainable practices for future generations.',
-        TargetCommunities: 15,
-        FundraisingGoal: 40000,
+        description: 'Preserving Africa\'s natural habitats and promoting sustainable practices for future generations.',
+        targetCommunities: 15,
+        fundraisingGoal: 40000,
+        imageUrl: '/env.jpg', // Assuming the image is in the public directory
         link: 'donation.js'
     },
     {
         title: 'Education Empowerment',
         description: 'Investing in education programs to empower youth and adults with knowledge and skills for a brighter future.',
-        TargetCommunities: 25,
-        FundraisingGoal: 60000,
+        targetCommunities: 25,
+        fundraisingGoal: 60000,
+        imageUrl: '/edu.jpg', // Assuming the image is in the public directory
         link: 'donation.js',
     }
-    // Add more projects as needed
   ];
 
   return (
@@ -69,8 +68,14 @@ const ProjectsPage = () => {
       {projects.map((project, index) => (
         <div className="col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
           <div className="card">
-            <div className="card-body">
+            <div className="card-body" >
               <h3 className="card-title">{project.title}</h3>
+              <img 
+                src={project.imageUrl} 
+                alt={project.title} 
+                className="project-image" 
+                style={{ width: '100%', height: '300px', objectFit: 'cover' }} // Adjust dimensions as needed
+              />
               <p className="card-text">{project.description}</p>
               <p className="card-text">Target Communities: {project.targetCommunities}</p>
               <p className="card-text">Fundraising Goal: ${project.fundraisingGoal}</p>
@@ -96,6 +101,7 @@ const ProjectsPage = () => {
       ))}
     </div>
   );
+  
 };
 
 export default ProjectsPage;

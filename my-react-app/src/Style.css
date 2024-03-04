@@ -1,6 +1,7 @@
 .form-container {
-    width: 100%;
+    width: 50%;
     padding: 1px;
+    display: flexbox;
   }
   
   .form-group {
@@ -9,12 +10,12 @@
   
   label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
   
   input {
     width: calc(100% - 22px); /* Adjusting for padding and border */
-    padding: 5px;
+    padding: 5%;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box; /* Ensures padding and border are included in width calculation */

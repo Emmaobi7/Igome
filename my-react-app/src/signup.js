@@ -93,7 +93,7 @@ const UserRegistrationForm = () => {
       const options = { headers: { Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json' } };
       await axios.post('http://localhost:5000/create_user', params, options);
 
-      navigate('/confirmation');
+      navigate('/projects');
 
       window.location.href = '/projects.html';
     } catch (err) {
@@ -108,7 +108,7 @@ const UserRegistrationForm = () => {
 
   return (
     <div className="container">
-      <h1>Be a HopeFusion hero by Registering with us</h1>
+      <h1>Be a HopeFusion hero</h1>
       <form onSubmit={onSubmit}>
       <div className="form-group">
       <label htmlFor="firstname">First Name:</label>

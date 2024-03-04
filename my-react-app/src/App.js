@@ -49,9 +49,9 @@ function App() {
       <Router>
         <section>
 	  <Routes>
-	    <Route path="/signup" element={ !user ? <SignUpForm /> : <Navigate to='/' /> } />
+	    <Route path="/signup" element={ <SignUpForm /> } />
       
-      <Route path='/' element={ user ? <TransactionDetails /> : <Navigate to='/' /> } />
+      <Route path='/' element={ user ? <ProjectsPage /> : <Navigate to='/' /> } />
 	    <Route path="/login" element={ <UserLogin /> } />
       <Route path='/reset-password' element={ <PasswordReset /> } />
 	    <Route path='/confirmation' element={ <Confirm /> } />

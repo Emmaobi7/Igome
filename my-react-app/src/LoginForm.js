@@ -43,7 +43,7 @@ const UserLogin = () => {
             setInvalidCredentials(false)
             setNetworkError(false)
             setRequired(false)
-            navigate('/')
+            navigate('/projects')
           } catch (err) {
             console.log(err.code)
             if (err.code === 'auth/network-request-failed') {
@@ -58,9 +58,6 @@ const UserLogin = () => {
             }
             }
     }
-
-    
-
 
     return (
       
@@ -95,10 +92,6 @@ const UserLogin = () => {
                         Password_reset
                         </NavLink>
                         
-                        </p>
-                        <p>
-                          Want to see ongoing projects?{' '}
-                          <NavLink to='/projects'>View Projects</NavLink>
                         </p>
 
                     </div>
