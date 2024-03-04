@@ -51,15 +51,14 @@ function App() {
 	  <Routes>
 	    <Route path="/signup" element={ <SignUpForm /> } />
       
-      <Route path='/' element={ user ? <ProjectsPage /> : <Navigate to='/' /> } />
+      <Route path='/' element={ user ? <ProjectsPage /> : <Navigate to='/login' /> } />
 	    <Route path="/login" element={ <UserLogin /> } />
       <Route path='/reset-password' element={ <PasswordReset /> } />
 	    <Route path='/confirmation' element={ <Confirm /> } />
-      <Route path='/donations' element={ user && <PaymentForm /> }/>
+      <Route path='/donations' element={ user ? <PaymentForm /> : <Navigate to='/login' /> }/>
       <Route path='/transaction' element={ <TransactionDetails />} />
-      <Route path='/payment' element={ <PaymentForm />} />
-      <Route path="/projects" element={ <ProjectsPage />} /> 
-
+          
+      
 	  </Routes>
 	</section>
       </Router>

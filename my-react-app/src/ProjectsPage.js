@@ -37,16 +37,18 @@ const ProjectsPage = () => {
       description: 'Supporting initiatives aimed at improving infrastructure, education, and healthcare in African communities.',
       targetCommunities: 20,
       fundraisingGoal: 50000,
-      imageUrl: '/cdev.jpg', // Assuming the image is in the public directory
-      link: 'donation.js' // Replace with actual link to donation page
+      imageUrl: '/cdev.jpg', 
+      link: 'donation.js',
+      toBeDonated: (50000 - balance * (5/22))
     },
     {
       title: 'Clean Water Initiative',
       description: 'Funding water sanitation and hygiene projects to provide access to clean and safe drinking water.',
       targetCommunities: 30,
       fundraisingGoal: 70000,
-      imageUrl: '/water.jpg', // Assuming the image is in the public directory
-      link: 'donation.js' // Replace with actual link to donation page
+      imageUrl: '/h20.jpg', 
+      link: 'donation.js',
+      toBeDonated: (70000 - balance *(7/22))
     },
     { 
         title: 'Environmental Conservation',
@@ -54,7 +56,8 @@ const ProjectsPage = () => {
         targetCommunities: 15,
         fundraisingGoal: 40000,
         imageUrl: '/env.jpg', // Assuming the image is in the public directory
-        link: 'donation.js'
+        link: 'donation.js',
+        toBeDonated: (40000 - balance * (4/22))
     },
     {
         title: 'Education Empowerment',
@@ -63,6 +66,7 @@ const ProjectsPage = () => {
         fundraisingGoal: 60000,
         imageUrl: '/edu.jpg', // Assuming the image is in the public directory
         link: 'donation.js',
+        toBeDonated: (60000 - balance * (6/22))
     }
   ];
 
@@ -72,31 +76,35 @@ const ProjectsPage = () => {
         <div className="col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
           <div className="card">
             <div className="card-body" >
-              <h3 className="card-title">{project.title}</h3>
+              <h3 className="card-title" style={{ color: 'black', fontWeight: 'bold' }}>{project.title}</h3>
               <img 
                 src={project.imageUrl} 
                 alt={project.title} 
                 className="project-image" 
                 style={{ width: '100%', height: '300px', objectFit: 'cover' }} // Adjust dimensions as needed
               />
-              <p className="card-text">{project.description}</p>
-              <p className="card-text">Target Communities: {project.targetCommunities}</p>
-              <p className="card-text">Fundraising Goal: ${project.fundraisingGoal}</p>
-              <p className="card-text">Progress: {(project.fundraisingGoal - balance) }</p>
+              <p className="card-text" style={{ color: 'black', fontWeight: 'bold' }}>{project.description}</p>
+              <p className="card-text" style={{ color: 'black', fontWeight: 'bold' }}>Target Communities: {project.targetCommunities}</p>
+              <p className="card-text" style={{ color: 'black', fontWeight: 'bold' }}>Fundraising Goal: ${project.fundraisingGoal}</p>
+              <p className="card-text" style={{ color: 'black', fontWeight: 'bold' }}>Progress: {(balance / project.fundraisingGoal) * 100}%</p>
+              <p className="card-text" style={{ color: 'black', fontWeight: 'bold' }}>{project.toBeDonated}</p>
+
               
-              <div className='square'>current Balance</div>
+              <div className='square'>
+              <button type="submit" className="btn btn-primary">
+              <NavLink to ='/transaction' style={{ color: 'white', textDecoration: 'none' }}>Donations progress</NavLink>
+              </button>
+              </div>
               <div className='balance'>
                 <div className=''>
                   {/* Balance Circle */}
                   <div className='balance-amount'>
-                    ${balance}
-                    <span id='span'>.00</span>
                   </div>
                 </div>
               </div>
               
               <button type="submit" className="btn btn-primary">
-                <NavLink to='/payment' style={{ color: 'white', textDecoration: 'none' }}>Donate to this project</NavLink>
+                <NavLink to='/donations' style={{ color: 'white', textDecoration: 'none' }}>Donate to this project</NavLink>
               </button>
             </div>
           </div>
