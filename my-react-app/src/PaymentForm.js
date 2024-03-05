@@ -53,7 +53,7 @@ function PaymentForm() {
         
         <input type="text" id="amountField" name="amount" value={amount} placeholder="amount" onChange={(e) => setAmount(e.target.value)} required/>
         <div className='btn'>
-        <button type="submit"  onClick={ onSubmit }>Make Donation</button>
+        <button id='fix' type="submit"  onClick={ onSubmit }>Make Donation</button>
         </div>
       </form>
     </div>

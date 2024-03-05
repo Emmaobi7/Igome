@@ -31,7 +31,7 @@
     margin-top: 20px;
   }
   
-  button {
+  #fix {
     background-color: #4caf50;
     color: white;
     width: 200px;
@@ -41,7 +41,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  #fix:hover {
     background-color: #45a049;
   }
 
