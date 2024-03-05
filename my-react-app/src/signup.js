@@ -93,9 +93,9 @@ const UserRegistrationForm = () => {
       const options = { headers: { Authorization: `Bearer ${idToken}`, 'Content-Type': 'application/json' } };
       await axios.post('http://localhost:5000/create_user', params, options);
 
-      navigate('/projects');
+      navigate('/confirmation');
 
-      window.location.href = '/projects.html';
+      
     } catch (err) {
       console.error(err.code);
       if (err.code === 'auth/email-already-in-use') {

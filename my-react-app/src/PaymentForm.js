@@ -59,7 +59,7 @@ function PaymentForm() {
           <button type="submit" className="btn-primary" onClick={onSubmit}>Make Donation</button>
 
         </form>
-        <NavLink to='/projects' className="back-link">Go Back to Projects</NavLink>
+        <NavLink to='/' className="back-link">Go Back to Projects</NavLink>
       </div>
     </div>
   );

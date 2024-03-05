@@ -52,7 +52,7 @@ const TransactionDetails = () => {
       <h2>Donations</h2>
       <p>{ new Date().toDateString() }</p>
     
-      <div className='square'>current Balance</div>
+      <div className='square'>Total Donations</div>
       <div className='balance'>
         <div className=''>
           {/* Balance Circle */}
@@ -63,7 +63,7 @@ const TransactionDetails = () => {
           {/* Incoming and Outgoing Finances */}
           <div div className='spending'>
             <div className='right'>
-            <NavLink to='/transfers'>
+            <NavLink to='/donations'>
               <button>Donate</button>
             </NavLink>
               <div className='amount green'>
